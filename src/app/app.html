@@ -1,0 +1,18 @@
+<header class="app-header">
+  <h1>Playground</h1>
+</header>
+
+<nav tngBreadcrumb aria-label="Breadcrumb" class="demo-breadcrumb-group">
+  <ol tngBreadcrumbList class="demo-breadcrumb-list">
+    <li tngBreadcrumbItem>
+      <a tngBreadcrumbLink href="/home">Home</a>
+    </li>
+
+    @if (breadcrumbLabel(); as label) {
+      <li tngBreadcrumbSeparator>&gt;</li>
+      <li tngBreadcrumbItem>{{ label }}</li>
+    }
+  </ol>
+</nav>
+
+<router-outlet />

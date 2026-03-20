@@ -1,0 +1,34 @@
+<main class="playground-home">
+  @for (group of groupedItems; track group.label) {
+    <section class="playground-home__category" [attr.aria-labelledby]="'cat-' + group.category">
+      <h2 class="playground-home__category-title" [id]="'cat-' + group.category">
+        {{ group.label }}
+      </h2>
+
+      <div class="playground-home__grid" role="list">
+        @for (item of group.items; track item.path) {
+          <article tngCard class="playground-home__card" role="listitem">
+            <header tngCardHeader>
+              <h3 tngCardTitle>{{ item.title }}</h3>
+              <p tngCardDescription>{{ item.description }}</p>
+            </header>
+
+            <div tngCardContent>
+              <p class="playground-home__path"><code>/{{ item.path }}</code></p>
+            </div>
+
+            <footer tngCardFooter>
+              <a
+                tngCardLink
+                class="playground-home__link"
+                [routerLink]="['/', item.path]"
+              >
+                Open demo
+              </a>
+            </footer>
+          </article>
+        }
+      </div>
+    </section>
+  }
+</main>
