@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
+import { DEFAULT_ROUTE } from './app.route.default';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: '', pathMatch: 'full', redirectTo: DEFAULT_ROUTE },
 
   {
     path: 'home',
