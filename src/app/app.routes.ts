@@ -105,7 +105,7 @@ export const routes: Routes = [
   {
     path: 'input',
     loadComponent: () =>
-      import('./playground/form/input/input.component').then((m) => m.InputComponent),
+      import('./playground/form/input/input-demo.component').then((m) => m.InputDemoComponent),
   },
   {
     path: 'label',
