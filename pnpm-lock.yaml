@@ -27,8 +27,8 @@ importers:
         specifier: ^21.2.0
         version: 21.2.5(@angular/common@21.2.5(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(@angular/platform-browser@21.2.5(@angular/common@21.2.5(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2)))(rxjs@7.8.2)
       '@tailng-ui/primitives':
-        specifier: ^0.16.0
-        version: 0.16.0(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(tslib@2.8.1)
+        specifier: ^0.19.0
+        version: 0.19.0(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(tslib@2.8.1)
       rxjs:
         specifier: ~7.8.0
         version: 7.8.2
@@ -1310,8 +1310,8 @@ packages:
     peerDependencies:
       tslib: ^2.3.0
 
-  '@tailng-ui/primitives@0.16.0':
-    resolution: {integrity: sha512-vzVGWEOpD+X2rYerD+MEzP0/98HKEL/aOAlemPfwmsagzksGoAIHH7vpcgusxcjnNcDFJ7qc+SMphoyZlQ0DmQ==}
+  '@tailng-ui/primitives@0.19.0':
+    resolution: {integrity: sha512-mRllMfDiJXOvSwDewh3AFOrECdP/uiJE6L915xv7k+9xHDi//+LsAldI6/jMpw0IoSATGncoZo3U/aQXeiX1ag==}
     peerDependencies:
       '@angular/core': ^21.1.0
       tslib: ^2.3.0
@@ -3756,7 +3756,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@tailng-ui/primitives@0.16.0(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(tslib@2.8.1)':
+  '@tailng-ui/primitives@0.19.0(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(tslib@2.8.1)':
     dependencies:
       '@angular/core': 21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2)
       '@tailng-ui/cdk': 0.15.0(tslib@2.8.1)

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { TngInput } from '@tailng-ui/primitives';
+import { TngInput, TngInputGroup, TngPrefix, TngSuffix } from '@tailng-ui/primitives';
 
 @Component({
   selector: 'app-input-demo',
   standalone: true,
   templateUrl: './input-demo.component.html',
   styleUrl: './input-demo.component.css',
-  imports: [TngInput],
+  imports: [TngInput, TngInputGroup, TngPrefix, TngSuffix],
 })
 export class InputDemoComponent {}
