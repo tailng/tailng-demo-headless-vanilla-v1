@@ -26,6 +26,9 @@ importers:
       '@angular/router':
         specifier: ^21.2.0
         version: 21.2.5(@angular/common@21.2.5(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(@angular/platform-browser@21.2.5(@angular/common@21.2.5(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2)))(rxjs@7.8.2)
+      '@tailng-ui/icons':
+        specifier: ^0.13.0
+        version: 0.13.0(@angular/common@21.2.5(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(rxjs@7.8.2)(tslib@2.8.1)
       '@tailng-ui/primitives':
         specifier: ^0.19.0
         version: 0.19.0(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(tslib@2.8.1)
@@ -924,6 +927,16 @@ packages:
   '@napi-rs/wasm-runtime@1.1.1':
     resolution: {integrity: sha512-p64ah1M1ld8xjWv3qbvFwHiFVWrq1yFvV4f7w+mzaqiR4IlSgkqhcRdHwsGgomwzBH51sRY4NEowLxnaBjcW/A==}
 
+  '@ng-icons/core@32.5.0':
+    resolution: {integrity: sha512-6zAXQ5vryaclOWEVzprFJjJAW6NSOl0eBm+I6BwmcMk+vR+1vHU82DNpNTbUE9Wn4CGXEP1yd+S+pTKIaRTXjg==}
+    peerDependencies:
+      '@angular/common': '>=20.0.0'
+      '@angular/core': '>=20.0.0'
+      rxjs: ^6.5.3 || ^7.4.0
+
+  '@ng-icons/lucide@33.2.0':
+    resolution: {integrity: sha512-/r+Q71JqglIRfgaZ9b6lkEe06I2fWYkmqwK0F7y6OhKYCbtKhsDF/B8jYDItlZkoCelviS0pA4/Ybd9njSYnUw==}
+
   '@npmcli/agent@4.0.0':
     resolution: {integrity: sha512-kAQTcEN9E8ERLVg5AsGwLNoFb+oEG6engbqAU2P43gD4JEIkNGMHdVQ096FsOAAYpZPB0RSt0zgInKIAS1l5QA==}
     engines: {node: ^20.17.0 || >=22.9.0}
@@ -1308,6 +1321,12 @@ packages:
   '@tailng-ui/cdk@0.15.0':
     resolution: {integrity: sha512-AH+z2FRSkrozKlGhY8VUfHberfFrNlQHxe5aspsozrRLOLZge2LmlqhYjXpxSJmtkvEvBHBwtH8+dlZwGDwtdg==}
     peerDependencies:
+      tslib: ^2.3.0
+
+  '@tailng-ui/icons@0.13.0':
+    resolution: {integrity: sha512-8VRF00gnqRqJgcJ1mDiGA94r0jahS1MErifDeH94qMHsUYpcz7FU49MdJmRtsdhboBYdZcx1ZSge/jumFuRKZg==}
+    peerDependencies:
+      '@angular/core': ^21.1.0
       tslib: ^2.3.0
 
   '@tailng-ui/primitives@0.19.0':
@@ -3471,6 +3490,17 @@ snapshots:
       '@tybys/wasm-util': 0.10.1
     optional: true
 
+  '@ng-icons/core@32.5.0(@angular/common@21.2.5(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(rxjs@7.8.2)':
+    dependencies:
+      '@angular/common': 21.2.5(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(rxjs@7.8.2)
+      '@angular/core': 21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2)
+      rxjs: 7.8.2
+      tslib: 2.8.1
+
+  '@ng-icons/lucide@33.2.0':
+    dependencies:
+      tslib: 2.8.1
+
   '@npmcli/agent@4.0.0':
     dependencies:
       agent-base: 7.1.4
@@ -3755,6 +3785,16 @@ snapshots:
   '@tailng-ui/cdk@0.15.0(tslib@2.8.1)':
     dependencies:
       tslib: 2.8.1
+
+  '@tailng-ui/icons@0.13.0(@angular/common@21.2.5(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(rxjs@7.8.2)(tslib@2.8.1)':
+    dependencies:
+      '@angular/core': 21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2)
+      '@ng-icons/core': 32.5.0(@angular/common@21.2.5(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(rxjs@7.8.2)
+      '@ng-icons/lucide': 33.2.0
+      tslib: 2.8.1
+    transitivePeerDependencies:
+      - '@angular/common'
+      - rxjs
 
   '@tailng-ui/primitives@0.19.0(@angular/core@21.2.5(@angular/compiler@21.2.5)(rxjs@7.8.2))(tslib@2.8.1)':
     dependencies:
