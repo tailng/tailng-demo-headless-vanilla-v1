@@ -1,16 +1,56 @@
-<div class="textarea-root">
-<div class="fd-page">
-  <div class="fd-header">
-    <h2>Textarea</h2>
-    <p>Multiline input for longer text.</p>
+<section class="textarea-preview-shell">
+  <div class="textarea-preview-header">
+    <label class="textarea-preview-label" for="release-notes-textarea">Release notes</label>
+    <button type="button" class="textarea-preview-status-button">Auto-save</button>
   </div>
-
-  <div class="fd-card">
-    <div class="fd-field">
-      <label for="demo-textarea">Message</label>
-      <textarea id="demo-textarea" rows="5" placeholder="Write something..."></textarea>
-      <span class="fd-hint">Static demo markup.</span>
+  <div class="textarea-preview-frame">
+    <div tngInputGroup class="textarea-preview-field-shell">
+      <textarea
+        id="release-notes-textarea"
+        tngTextarea
+        rows="4"
+        aria-label="Release notes"
+        [value]="releaseNotes()"
+        (input)="onReleaseNotesInput($event)"
+      ></textarea>
     </div>
   </div>
-</div>
-</div>
+</section>
+<br />
+<br />
+<section class="textarea-review-demo-shell">
+  <div class="textarea-review-demo-header">
+    <label class="textarea-review-demo-label" for="review-notes-demo">Reviewer notes</label>
+    <span class="textarea-review-demo-status" aria-hidden="true">Draft</span>
+  </div>
+  <div tngInputGroup class="textarea-review-demo-field-shell">
+    <textarea
+      id="review-notes-demo"
+      tngTextarea
+      rows="5"
+      placeholder="Add reviewer notes"
+      aria-label="Reviewer notes"
+      [value]="reviewNotes()"
+      (input)="onReviewNotesInput($event)"
+    ></textarea>
+  </div>
+</section>
+<br />
+<br />
+<section class="support-reply-demo-shell">
+  <div class="support-reply-demo-header">
+    <label class="support-reply-demo-label" for="support-reply-textarea">Support reply</label>
+    <span class="support-reply-demo-status" aria-hidden="true">Markdown enabled</span>
+  </div>
+  <div tngInputGroup class="support-reply-shell">
+    <textarea
+      id="support-reply-textarea"
+      tngTextarea
+      rows="5"
+      aria-label="Support reply"
+      [value]="supportReply()"
+      (input)="onSupportReplyInput($event)"
+    ></textarea>
+  </div>
+</section>
+
