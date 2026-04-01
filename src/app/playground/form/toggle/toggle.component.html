@@ -1,16 +1,43 @@
-<div class="toggle-root">
-<div class="fd-page">
-  <div class="fd-header">
-    <h2>Toggle</h2>
-    <p>Icon-style pressed button.</p>
+<section class="headless-toggle-view-shell">
+  <div class="headless-toggle-view-shell__header">
+    <span class="headless-toggle-view-shell__eyebrow">View mode</span>
+    <p class="headless-toggle-view-shell__body">Pick one layout while keeping native button semantics.</p>
   </div>
-
-  <div class="fd-card">
-    <div class="fd-toggle-row">
-      <button type="button" class="fd-toggle fd-toggle--on" aria-pressed="true">On</button>
-      <button type="button" class="fd-toggle" aria-pressed="false">Off</button>
-      <button type="button" class="fd-toggle fd-toggle--disabled" aria-pressed="false" disabled>Disabled</button>
-    </div>
+  <div
+    tngToggleGroup
+    class="headless-toggle-view-shell__group"
+    selectionMode="single"
+    ariaLabel="View mode"
+    [value]="viewMode()"
+    (valueChange)="onViewModeChange($event)"
+  >
+    <button tngToggle tngToggleValue="grid" class="headless-toggle-view-shell__item">Grid</button>
+    <button tngToggle tngToggleValue="list" class="headless-toggle-view-shell__item">List</button>
+    <button tngToggle tngToggleValue="split" class="headless-toggle-view-shell__item">Split</button>
   </div>
-</div>
-</div>
+  <p class="headless-toggle-view-shell__summary">Selected: {{ viewMode() }}</p>
+</section>
+<br/>
+<section class="headless-toggle-format-shell">
+  <div class="headless-toggle-format-shell__header">
+    <span class="headless-toggle-format-shell__eyebrow">Formatting tools</span>
+    <p class="headless-toggle-format-shell__body">Make active states obvious without losing native button semantics.</p>
+  </div>
+  <div
+    tngToggleGroup
+    class="headless-toggle-format-shell__group"
+    ariaLabel="Formatting tools"
+    [values]="formatting()"
+    (valuesChange)="onFormattingChange($event)"
+  >
+    <button tngToggle tngToggleValue="bold" class="headless-toggle-format-shell__item">Bold</button>
+    <button tngToggle tngToggleValue="code" class="headless-toggle-format-shell__item">Code</button>
+    <button tngToggle tngToggleValue="mentions" class="headless-toggle-format-shell__item">Mentions</button>
+  </div>
+  <p class="headless-toggle-format-shell__summary">Active: {{ formatting().join(", ") }}</p>
+</section>
+<br/>
+<section class="headless-toggle-disabled-example">
+  <button tngToggle class="headless-toggle-disabled-example__item" [pressed]="alertsEnabled()" (pressedChange)="alertsEnabled.set($event)">Alerts</button>
+  <button tngToggle class="headless-toggle-disabled-example__item" [disabled]="true">Scheduled reports</button>
+</section>

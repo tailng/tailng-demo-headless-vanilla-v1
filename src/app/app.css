@@ -100,3 +100,11 @@
   background: var(--bc-border);
   margin-bottom: 0.75rem;
 }
+
+.app-main {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 0 1.25rem 1.5rem;
+  display: grid;
+  justify-items: center;
+}
