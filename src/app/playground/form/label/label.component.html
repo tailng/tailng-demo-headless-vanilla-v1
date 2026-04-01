@@ -1,20 +1,40 @@
-<div class="label-root">
-<div class="fd-page">
-  <div class="fd-header">
-    <h2>Label</h2>
-    <p>Accessible form labels (required/disabled states).</p>
+<section class="headless-label-overview-card">
+  <div class="headless-label-overview-card__field">
+    <label tngLabel [required]="true" for="headless-label-plain-workspace">
+      Workspace name
+    </label>
+    <input
+      id="headless-label-plain-workspace"
+      class="headless-label-overview-card__input"
+      type="text"
+      placeholder="North Star"
+      aria-required="true"
+    />
   </div>
-
-  <div class="fd-card">
-    <div class="fd-field">
-      <label for="demo-label-required"><span class="fd-required">*</span> Email</label>
-      <input id="demo-label-required" type="email" placeholder="name@example.com" required />
-    </div>
-
-    <div class="fd-field">
-      <label for="demo-label-disabled">Disabled</label>
-      <input id="demo-label-disabled" type="text" placeholder="Disabled" disabled />
-    </div>
+  <label tngLabel class="headless-label-overview-card__consent">
+    <input class="headless-label-overview-card__checkbox" type="checkbox" />
+    <span>Send the release announcement to Slack</span>
+  </label>
+</section>
+<br />
+<section class="headless-label-style-card">
+  <div class="headless-label-style-card__field">
+    <label tngLabel [required]="true" for="headless-label-style-owner">
+      Release owner
+    </label>
+    <input id="headless-label-style-owner" class="headless-label-style-card__input" type="text" />
   </div>
-</div>
-</div>
+  <div class="headless-label-style-card__field">
+    <label tngLabel [disabled]="true" for="headless-label-style-archive">
+      Archived environment
+    </label>
+    <input id="headless-label-style-archive" class="headless-label-style-card__input" type="text" disabled />
+  </div>
+</section>
+<br />
+<section class="headless-label-overview-card">
+<label tngLabel class="headless-label-choice-row">
+  <input class="headless-label-choice-row__checkbox" type="checkbox" />
+  <span>Send the release announcement to Slack</span>
+</label>
+</section>
