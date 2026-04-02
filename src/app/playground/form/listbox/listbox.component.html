@@ -1,22 +1,81 @@
-<div class="listbox-root">
-<div class="fd-page">
-  <div class="fd-header">
-    <h2>ListBox</h2>
-    <p>Listbox UI for multi selection.</p>
+<section class="headless-listbox-overview-example">
+  <div
+    tngListbox
+    tabindex="0"
+    class="headless-listbox-overview-example__listbox"
+    [multiple]="true"
+    [value]="selectedCapabilities()"
+    (valueChange)="onSelectedCapabilitiesChange($event)"
+  >
+    @for (option of capabilityOptions; track option.id) {
+      <div
+        tngOption
+        class="headless-listbox-overview-example__option"
+        [tngValue]="option.id"
+        [disabled]="option.disabled === true"
+      >
+        <p class="headless-listbox-overview-example__title">{{ option.label }}</p>
+        <p class="headless-listbox-overview-example__description">{{ option.description }}</p>
+      </div>
+    }
   </div>
+  <p class="headless-listbox-overview-example__summary">
+    Selected: {{ selectedSummary() }}
+  </p>
+</section>
+<br/>
+<section class="headless-listbox-dual-handoff-example">
+  <div class="headless-listbox-dual-handoff-example__grid">
+    <section class="headless-listbox-dual-handoff-example__card">
+      <h3 class="headless-listbox-dual-handoff-example__title">Publish channels A</h3>
+      <div
+        tngListbox
+        tabindex="0"
+        class="headless-listbox-dual-handoff-example__listbox"
+        [multiple]="true"
+        [value]="selectedChannelsA()"
+        (valueChange)="onSelectedChannelsAChange($event)"
+      >
+        @for (option of channelOptions; track option.id) {
+          <div
+            tngOption
+            class="headless-listbox-dual-handoff-example__option"
+            [tngValue]="option.id"
+          >
+            <p class="headless-listbox-dual-handoff-example__option-title">{{ option.label }}</p>
+            <p class="headless-listbox-dual-handoff-example__option-description">{{ option.description }}</p>
+          </div>
+        }
+      </div>
+      <p class="headless-listbox-dual-handoff-example__summary">
+        Selected: {{ selectedSummaryA() }}
+      </p>
+    </section>
 
-  <div class="fd-card">
-    <div class="fd-field">
-      <label for="demo-listbox">Choose items</label>
-      <select id="demo-listbox" multiple size="6">
-        <option selected>Item 1</option>
-        <option>Item 2</option>
-        <option selected>Item 3</option>
-        <option>Item 4</option>
-        <option disabled>Disabled item</option>
-        <option>Item 6</option>
-      </select>
-    </div>
+    <section class="headless-listbox-dual-handoff-example__card">
+      <h3 class="headless-listbox-dual-handoff-example__title">Publish channels B</h3>
+      <div
+        tngListbox
+        tabindex="0"
+        class="headless-listbox-dual-handoff-example__listbox"
+        [multiple]="true"
+        [value]="selectedChannelsB()"
+        (valueChange)="onSelectedChannelsBChange($event)"
+      >
+        @for (option of channelOptions; track option.id) {
+          <div
+            tngOption
+            class="headless-listbox-dual-handoff-example__option"
+            [tngValue]="option.id"
+          >
+            <p class="headless-listbox-dual-handoff-example__option-title">{{ option.label }}</p>
+            <p class="headless-listbox-dual-handoff-example__option-description">{{ option.description }}</p>
+          </div>
+        }
+      </div>
+      <p class="headless-listbox-dual-handoff-example__summary">
+        Selected: {{ selectedSummaryB() }}
+      </p>
+    </section>
   </div>
-</div>
-</div>
+</section>
