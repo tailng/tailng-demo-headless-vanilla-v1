@@ -1,23 +1,159 @@
-<div class="autocomplete-root">
-<div class="fd-page">
-  <div class="fd-header">
-    <h2>Autocomplete</h2>
-    <p>Dynamic suggestion list (static demo).</p>
+<section class="headless-autocomplete-overview-example">
+  <span class="headless-autocomplete-overview-label">Country directory</span>
+
+  <section
+    tngAutocomplete
+    class="headless-autocomplete-overview-control"
+    [open]="open()"
+    (openChange)="open.set($event)"
+    [value]="selectedCountry()"
+    (valueChange)="selectedCountry.set($event)"
+    [query]="query()"
+    (queryChange)="query.set($event)"
+  >
+    <div tngAutocompleteTriggerContainer class="headless-autocomplete-overview-trigger">
+      <input
+        tngAutocompleteTrigger
+        type="text"
+        [value]="displayText()"
+        (input)="onInput($event)"
+        aria-label="Country directory"
+        placeholder="Type Ind to filter"
+      />
+      <span tngAutocompleteIcon aria-hidden="true">▾</span>
+    </div>
+
+    <div tngAutocompleteContent class="contents">
+      <div tngAutocompleteOverlay class="headless-autocomplete-overview-plain-overlay">
+        <ul tngAutocompleteListbox [value]="selectedCountry()">
+          @for (country of filteredCountries(); track country.code) {
+            <li
+              tngAutocompleteOption
+              class="headless-autocomplete-overview-plain-option"
+              [tngValue]="country.code"
+            >
+              {{ country.label }}
+            </li>
+          }
+          @if (filteredCountries().length === 0) {
+            <li data-slot="autocomplete-empty">No matches</li>
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <p class="headless-autocomplete-overview-summary">Selected: {{ selectedLabel() }}</p>
+</section>
+
+<br/>
+
+<section class="docs-release-owner-autocomplete-shell">
+  <div class="docs-release-owner-autocomplete-shell__header">
+    <span class="docs-release-owner-autocomplete-shell__kicker">Release owner</span>
+    <p class="docs-release-owner-autocomplete-shell__copy">Assign a shipping owner before the release branch opens.</p>
   </div>
 
-  <div class="fd-card">
-    <div class="fd-field">
-      <label for="demo-autocomplete">Search</label>
-      <input id="demo-autocomplete" list="demo-suggestions" placeholder="Type to filter..." />
-      <datalist id="demo-suggestions">
-        <option value="Accordion"></option>
-        <option value="Checkbox"></option>
-        <option value="Dropdown Menu"></option>
-        <option value="Popover"></option>
-        <option value="Tooltip"></option>
-      </datalist>
-      <span class="fd-hint">Native datalist-based demo (no advanced filtering).</span>
+  <section
+    tngAutocomplete
+    class="docs-release-owner-autocomplete-shell__control"
+    [open]="releaseOwnerAutocompleteOpen()"
+    (openChange)="releaseOwnerAutocompleteOpen.set($event)"
+    [value]="releaseOwnerAutocompleteValue()"
+    (valueChange)="releaseOwnerAutocompleteValue.set($event)"
+    [query]="releaseOwnerAutocompleteQuery()"
+    (queryChange)="releaseOwnerAutocompleteQuery.set($event)"
+  >
+    <div tngAutocompleteTriggerContainer class="docs-release-owner-autocomplete-shell__trigger">
+      <input
+        tngAutocompleteTrigger
+        type="text"
+        [value]="releaseOwnerAutocompleteDisplayText()"
+        (input)="onReleaseOwnerAutocompleteInput($event)"
+        aria-label="Release owner"
+        placeholder="Search people"
+      />
+      <span tngAutocompleteIcon aria-hidden="true">⌄</span>
     </div>
+
+    <div tngAutocompleteContent class="contents">
+      <div tngAutocompleteOverlay class="docs-release-owner-autocomplete-shell__overlay">
+        <ul tngAutocompleteListbox [value]="releaseOwnerAutocompleteValue()">
+          @for (person of releaseOwnerAutocompleteFilteredOptions(); track person.id) {
+            <li
+              tngAutocompleteOption
+              class="docs-release-owner-autocomplete-shell__option"
+              [tngValue]="person.id"
+            >
+              {{ person.label }}
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+</section>
+
+<br/>
+
+<section class="docs-headless-repository-create-autocomplete-plain">
+  <div class="docs-headless-repository-create-autocomplete-plain__header">
+    <span class="docs-headless-repository-create-autocomplete-plain__label">Repository search</span>
+    <p class="docs-headless-repository-create-autocomplete-plain__copy">
+      Type to filter, or press Enter to create a new repository tag when there is no active match.
+    </p>
   </div>
-</div>
-</div>
+
+  <section
+    tngAutocomplete
+    class="docs-headless-repository-create-autocomplete-plain__control"
+    [open]="repositoryCreatePlainOpen()"
+    (openChange)="repositoryCreatePlainOpen.set($event)"
+    [value]="repositoryCreatePlainValue()"
+    (valueChange)="repositoryCreatePlainValue.set($event)"
+    [query]="repositoryCreatePlainQuery()"
+    (queryChange)="repositoryCreatePlainQuery.set($event)"
+    [allowCreate]="true"
+    [strict]="false"
+    (create)="onRepositoryCreatePlain($event.query)"
+  >
+    <div
+      tngAutocompleteTriggerContainer
+      class="docs-headless-repository-create-autocomplete-plain__trigger"
+    >
+      <input
+        tngAutocompleteTrigger
+        type="text"
+        [value]="repositoryCreatePlainDisplayText()"
+        (input)="onRepositoryCreatePlainInput($event)"
+        aria-label="Repository search"
+        placeholder="Search or create repository"
+      />
+      <span tngAutocompleteIcon aria-hidden="true">＋</span>
+    </div>
+
+    <div tngAutocompleteContent class="contents">
+      <div tngAutocompleteOverlay class="docs-headless-repository-create-autocomplete-plain__overlay">
+        <ul tngAutocompleteListbox [value]="repositoryCreatePlainValue()">
+          @for (repository of repositoryCreatePlainFilteredOptions(); track repository.id) {
+            <li
+              tngAutocompleteOption
+              class="docs-headless-repository-create-autocomplete-plain__option"
+              [tngValue]="repository.id"
+            >
+              {{ repository.label }}
+            </li>
+          }
+          @if (repositoryCreatePlainFilteredOptions().length === 0) {
+            <li data-slot="autocomplete-empty">Press Enter to create “{{ repositoryCreatePlainQuery() }}”.</li>
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <p class="docs-headless-repository-create-autocomplete-plain__summary">
+    Selected: {{ repositoryCreatePlainSelectedLabel() }}
+  </p>
+</section>
+
