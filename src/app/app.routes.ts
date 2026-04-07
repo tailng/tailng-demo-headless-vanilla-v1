@@ -233,11 +233,6 @@ export const routes: Routes = [
       import('./playground/form/chips/chips.component').then((m) => m.ChipsComponent),
   },
   {
-    path: 'combobox',
-    loadComponent: () =>
-      import('./playground/form/combobox/combobox.component').then((m) => m.ComboboxComponent),
-  },
-  {
     path: 'select',
     loadComponent: () =>
       import('./playground/form/select/select.component').then((m) => m.SelectComponent),
