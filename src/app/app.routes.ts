@@ -233,6 +233,11 @@ export const routes: Routes = [
       import('./playground/form/chips/chips.component').then((m) => m.ChipsComponent),
   },
   {
+    path: 'input-group',
+    loadComponent: () =>
+      import('./playground/form/input-group/input-group.component').then((m) => m.InputGroupComponent),
+  },
+  {
     path: 'select',
     loadComponent: () =>
       import('./playground/form/select/select.component').then((m) => m.SelectComponent),
