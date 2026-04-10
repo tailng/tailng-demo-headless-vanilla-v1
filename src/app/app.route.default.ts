@@ -1,1 +1,1 @@
-export const DEFAULT_ROUTE = 'input-group';
+export const DEFAULT_ROUTE = 'input-otp';

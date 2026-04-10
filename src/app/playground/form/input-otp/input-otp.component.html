@@ -1,35 +1,112 @@
-<div class="input-otp-root">
-<div class="fd-page">
-  <div class="fd-header">
-    <h2>Input OTP</h2>
-    <p>Segmented one-time password entry.</p>
+<section class="docs-headless-input-otp-overview-plain-shell">
+  <div class="docs-headless-input-otp-overview-plain-header">
+    <span class="docs-headless-input-otp-overview-plain-kicker">Verification code</span>
+    <p class="docs-headless-input-otp-overview-plain-copy">
+      Own the slot markup directly while the primitive coordinates value and focus movement.
+    </p>
   </div>
 
-  <div class="fd-card">
-    <div class="fd-field">
-      <label>Enter code</label>
-      <div class="fd-otp" aria-label="OTP inputs">
-        <input maxlength="1" inputmode="numeric" value="" />
-        <input maxlength="1" inputmode="numeric" value="" />
-        <input maxlength="1" inputmode="numeric" value="" />
-        <input maxlength="1" inputmode="numeric" value="" />
-        <input maxlength="1" inputmode="numeric" value="" />
-        <input maxlength="1" inputmode="numeric" value="" />
-      </div>
-      <span class="fd-hint">Non-interactive demo (static markup).</span>
-    </div>
-
-    <div class="fd-field">
-      <label>Disabled</label>
-      <div class="fd-otp fd-otp--disabled" aria-label="OTP inputs disabled">
-        <input maxlength="1" disabled />
-        <input maxlength="1" disabled />
-        <input maxlength="1" disabled />
-        <input maxlength="1" disabled />
-        <input maxlength="1" disabled />
-        <input maxlength="1" disabled />
-      </div>
-    </div>
+  <div
+    tngInputOtp
+    class="docs-headless-input-otp-overview-plain-root"
+    [length]="headlessInputOtpOverviewPlainLength"
+    [value]="headlessInputOtpOverviewPlainValue()"
+    (valueChange)="headlessInputOtpOverviewPlainValue.set($event)"
+    [activeIndex]="headlessInputOtpOverviewPlainActiveIndex()"
+    (activeIndexChange)="headlessInputOtpOverviewPlainActiveIndex.set($event)"
+  >
+    @for (slotIndex of headlessInputOtpOverviewPlainSlotIndexes; track slotIndex) {
+      <input
+        [tngInputOtpSlot]="slotIndex"
+        class="docs-headless-input-otp-overview-plain-slot"
+        maxlength="1"
+        inputmode="numeric"
+      />
+    }
   </div>
-</div>
-</div>
+
+  <p class="docs-headless-input-otp-overview-plain-summary">Value: {{ headlessInputOtpOverviewPlainValue() || '—' }}</p>
+  <p class="docs-headless-input-otp-overview-plain-summary">State: {{ headlessInputOtpOverviewPlainState() }}</p>
+</section>
+<br/>
+<section class="docs-headless-input-otp-styling-plain-shell">
+  <div
+    tngInputOtp
+    class="docs-headless-input-otp-styling-plain-root"
+    [length]="6"
+    [value]="'2184'"
+    [focused]="true"
+    [focusVisible]="true"
+  >
+    @for (slotIndex of [0, 1, 2, 3, 4, 5]; track slotIndex) {
+      <input
+        [tngInputOtpSlot]="slotIndex"
+        class="docs-headless-input-otp-styling-plain-slot"
+        maxlength="1"
+        inputmode="numeric"
+      />
+    }
+  </div>
+</section>
+<br/>
+<section class="docs-headless-input-otp-examples-sms-plain-shell">
+  <div class="docs-headless-input-otp-examples-sms-plain-header">
+    <span class="docs-headless-input-otp-examples-sms-plain-kicker">SMS verification</span>
+    <p class="docs-headless-input-otp-examples-sms-plain-copy">
+      A lightweight owned OTP row for a simple SMS verification step.
+    </p>
+  </div>
+
+  <div
+    tngInputOtp
+    class="docs-headless-input-otp-examples-sms-plain-root"
+    [length]="headlessInputOtpExamplesSmsPlainLength"
+    [value]="headlessInputOtpExamplesSmsPlainValue()"
+    (valueChange)="headlessInputOtpExamplesSmsPlainValue.set($event)"
+    [activeIndex]="headlessInputOtpExamplesSmsPlainActiveIndex()"
+    (activeIndexChange)="headlessInputOtpExamplesSmsPlainActiveIndex.set($event)"
+  >
+    @for (slotIndex of headlessInputOtpExamplesSmsPlainSlotIndexes; track slotIndex) {
+      <input
+        [tngInputOtpSlot]="slotIndex"
+        class="docs-headless-input-otp-examples-sms-plain-slot"
+        maxlength="1"
+        inputmode="numeric"
+      />
+    }
+  </div>
+
+  <p class="docs-headless-input-otp-examples-sms-plain-summary">Value: {{ headlessInputOtpExamplesSmsPlainValue() || '—' }}</p>
+  <p class="docs-headless-input-otp-examples-sms-plain-summary">State: {{ headlessInputOtpExamplesSmsPlainState() }}</p>
+</section>
+<br/>
+<section class="docs-headless-input-otp-examples-recovery-plain-shell">
+  <div class="docs-headless-input-otp-examples-recovery-plain-header">
+    <span class="docs-headless-input-otp-examples-recovery-plain-kicker">Recovery checkpoint</span>
+    <p class="docs-headless-input-otp-examples-recovery-plain-copy">
+      A softer approval shell that still keeps the slot markup fully owned.
+    </p>
+  </div>
+
+  <div
+    tngInputOtp
+    class="docs-headless-input-otp-examples-recovery-plain-root"
+    [length]="headlessInputOtpExamplesRecoveryPlainLength"
+    [value]="headlessInputOtpExamplesRecoveryPlainValue()"
+    (valueChange)="headlessInputOtpExamplesRecoveryPlainValue.set($event)"
+    [activeIndex]="headlessInputOtpExamplesRecoveryPlainActiveIndex()"
+    (activeIndexChange)="headlessInputOtpExamplesRecoveryPlainActiveIndex.set($event)"
+  >
+    @for (slotIndex of headlessInputOtpExamplesRecoveryPlainSlotIndexes; track slotIndex) {
+      <input
+        [tngInputOtpSlot]="slotIndex"
+        class="docs-headless-input-otp-examples-recovery-plain-slot"
+        maxlength="1"
+        inputmode="numeric"
+      />
+    }
+  </div>
+
+  <p class="docs-headless-input-otp-examples-recovery-plain-summary">Value: {{ headlessInputOtpExamplesRecoveryPlainValue() || '—' }}</p>
+  <p class="docs-headless-input-otp-examples-recovery-plain-summary">State: {{ headlessInputOtpExamplesRecoveryPlainState() }}</p>
+</section>
