@@ -1,1 +1,86 @@
-<div class="menubar-root"></div>
+<section class="headless-menubar-overview-plain-card">
+  <span class="headless-menubar-overview-plain-kicker">Workspace commands</span>
+  <p class="headless-menubar-overview-plain-copy">Keep top-level actions visible while menus own the deeper command tree.</p>
+
+  <div class="headless-menubar-overview-plain-stage">
+    <div tngMenubar aria-label="Workspace commands" class="headless-menubar-overview-plain-shell">
+      <div class="headless-menubar-overview-plain-item-shell">
+        <div tngMenu #overviewPlainFileMenu="tngMenu" aria-label="File menu" class="headless-menubar-overview-plain-menu" (tngMenuSelect)="onOverviewPlainCommandSelect($event)">
+          <div tngMenuGroupLabel class="headless-menubar-overview-plain-group">File</div>
+          <button type="button" tngMenuItem tngMenuItemValue="Create document">New</button>
+          <button type="button" tngMenuItem tngMenuItemValue="Open document">Open</button>
+          <button type="button" tngMenuItem tngMenuItemValue="Save document">Save</button>
+        </div>
+        <button type="button" tngMenubarItem [tngMenubarMenu]="overviewPlainFileMenu">File</button>
+      </div>
+
+      <div class="headless-menubar-overview-plain-item-shell">
+        <div tngMenu #overviewPlainEditMenu="tngMenu" aria-label="Edit menu" class="headless-menubar-overview-plain-menu" (tngMenuSelect)="onOverviewPlainCommandSelect($event)">
+          <div tngMenuGroupLabel class="headless-menubar-overview-plain-group">Edit</div>
+          <button type="button" tngMenuItem tngMenuItemValue="Undo change">Undo</button>
+          <button type="button" tngMenuItem tngMenuItemValue="Redo change">Redo</button>
+          <div tngMenuSeparator class="headless-menubar-overview-plain-separator"></div>
+          <button type="button" tngMenuItem tngMenuItemValue="Find in page">Find</button>
+        </div>
+        <button type="button" tngMenubarItem [tngMenubarMenu]="overviewPlainEditMenu">Edit</button>
+      </div>
+
+      <button type="button" tngMenubarItem (click)="onOverviewPlainLeafCommandSelect('Help')">Help</button>
+    </div>
+  </div>
+
+  <p class="headless-menubar-overview-plain-state">Last command: <strong>{{ overviewPlainLastCommand() }}</strong></p>
+</section>
+
+
+<br/>
+
+<div class="headless-menubar-workspace-plain-stage headless-menubar-workspace-plain-stage--short">
+  <div tngMenubar aria-label="Workspace commands" class="headless-menubar-workspace-plain-shell">
+    <div class="headless-menubar-workspace-plain-item-shell">
+      <div tngMenu #workspacePlainSnippetFileMenu="tngMenu" aria-label="File menu" class="headless-menubar-workspace-plain-menu" (tngMenuSelect)="onWorkspacePlainCommandSelect($event)">
+        <div tngMenuGroupLabel class="headless-menubar-workspace-plain-group">File</div>
+        <button type="button" tngMenuItem tngMenuItemValue="Create release">New release</button>
+        <button type="button" tngMenuItem tngMenuItemValue="Publish release">Publish</button>
+      </div>
+      <button type="button" tngMenubarItem [tngMenubarMenu]="workspacePlainSnippetFileMenu">File</button>
+    </div>
+
+    <div class="headless-menubar-workspace-plain-item-shell">
+      <div tngMenu #workspacePlainSnippetViewMenu="tngMenu" aria-label="View menu" class="headless-menubar-workspace-plain-menu" (tngMenuSelect)="onWorkspacePlainCommandSelect($event)">
+        <button type="button" tngMenuItem tngMenuItemValue="Toggle sidebar">Toggle sidebar</button>
+        <button type="button" tngMenuItem tngMenuItemValue="Open command palette">Command palette</button>
+      </div>
+      <button type="button" tngMenubarItem [tngMenubarMenu]="workspacePlainSnippetViewMenu">View</button>
+    </div>
+
+    <button type="button" tngMenubarItem (click)="onWorkspacePlainLeafCommandSelect('Help')">Help</button>
+  </div>
+</div>
+
+
+<br/>
+<div class="headless-menubar-cascade-plain-stage headless-menubar-cascade-plain-stage--cascade">
+  <div tngMenubar aria-label="Cascaded command bar" class="headless-menubar-cascade-plain-shell">
+    <div class="headless-menubar-cascade-plain-item-shell">
+      <div tngMenu #cascadePlainSnippetFileMenu="tngMenu" aria-label="File menu" class="headless-menubar-cascade-plain-menu" (tngMenuSelect)="onCascadePlainCommandSelect($event)">
+        <button type="button" tngMenuItem tngMenuItemValue="Create project">Create project</button>
+        <button type="button" tngMenuItem [tngMenuItemSubmenu]="cascadePlainSnippetImportMenu" tngMenuItemValue="Import from source">Import from…</button>
+        <div tngMenuSeparator class="headless-menubar-cascade-plain-separator"></div>
+        <button type="button" tngMenuItem tngMenuItemValue="Archive project">Archive project</button>
+
+        <div tngMenu #cascadePlainSnippetImportMenu="tngMenu" aria-label="Import submenu" class="headless-menubar-cascade-plain-menu headless-menubar-cascade-plain-menu--submenu headless-menubar-cascade-plain-menu--level-1" (tngMenuSelect)="onCascadePlainCommandSelect($event)">
+          <button type="button" tngMenuItem tngMenuItemValue="Import from CSV">CSV file</button>
+          <button type="button" tngMenuItem [tngMenuItemSubmenu]="cascadePlainSnippetGitMenu" tngMenuItemValue="Import from git">Git repository</button>
+        </div>
+
+        <div tngMenu #cascadePlainSnippetGitMenu="tngMenu" aria-label="Git provider submenu" class="headless-menubar-cascade-plain-menu headless-menubar-cascade-plain-menu--submenu headless-menubar-cascade-plain-menu--level-2" (tngMenuSelect)="onCascadePlainCommandSelect($event)">
+          <button type="button" tngMenuItem tngMenuItemValue="Import from GitHub">GitHub</button>
+          <button type="button" tngMenuItem tngMenuItemValue="Import from GitLab">GitLab</button>
+        </div>
+      </div>
+      <button type="button" tngMenubarItem [tngMenubarMenu]="cascadePlainSnippetFileMenu">File</button>
+    </div>
+  </div>
+</div>
+
