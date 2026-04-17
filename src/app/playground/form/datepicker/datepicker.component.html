@@ -1,0 +1,202 @@
+<section class="docs-headless-datepicker-overview-plain-card">
+  <span class="docs-headless-datepicker-overview-plain-label">Invoice date</span>
+  <section class="headless-datepicker-demo docs-headless-datepicker-overview-demo docs-headless-datepicker-overview-demo--plain" [tngDatepickerHost]="controller">
+    <div class="headless-datepicker-field" data-slot="datepicker-field">
+      <div #anchorShell class="headless-datepicker-anchor">
+        <div
+          class="headless-datepicker-shell"
+          data-slot="datepicker-input-shell"
+          [attr.data-invalid]="datepicker.outputs().validationError !== null ? 'true' : null"
+          [attr.data-open]="datepicker.outputs().getTriggerAttributes()['data-open']"
+        >
+          <input
+            class="headless-datepicker-input"
+            [tngDatepickerInput]="controller"
+            type="text"
+            inputmode="numeric"
+            placeholder="MM-DD-YYYY"
+            aria-label="Overview invoice date"
+          />
+
+          <button
+            type="button"
+            class="headless-datepicker-trigger"
+            [tngDatepickerTrigger]="controller"
+            tabindex="-1"
+            aria-label="Open calendar"
+          >
+            <tng-icon icon="calendar-days" class="headless-datepicker-trigger-icon" />
+            <span class="headless-datepicker-trigger-chevron" aria-hidden="true">▾</span>
+          </button>
+        </div>
+
+        <section
+          [tngDatepickerOverlay]="controller"
+          [tngDatepickerOverlayAnchor]="anchorShell"
+          class="headless-datepicker-overlay"
+        >
+          <header class="headless-datepicker-header" data-slot="datepicker-header">
+            <div class="headless-datepicker-header-row">
+              <button type="button" class="headless-datepicker-nav" [tngDatepickerPrevButton]="controller">‹</button>
+              <button
+                type="button"
+                class="headless-datepicker-period"
+                [tngDatepickerPeriodButton]="controller"
+              >
+                <span class="headless-datepicker-period-title">{{ datepicker.periodLabel() }}</span>
+                @if (datepicker.outputs().view !== 'year') {
+                  <span class="headless-datepicker-period-chevron" aria-hidden="true">▾</span>
+                }
+              </button>
+              <button type="button" class="headless-datepicker-nav" [tngDatepickerNextButton]="controller">›</button>
+            </div>
+          </header>
+
+          @if (datepicker.outputs().view === 'day') {
+            <div class="headless-datepicker-weekdays" data-slot="datepicker-weekdays" aria-hidden="true">
+              @for (label of datepicker.outputs().weekdayLabels; track label) {
+                <span data-slot="datepicker-weekday">{{ label }}</span>
+              }
+            </div>
+
+            <div
+              class="headless-datepicker-day-grid"
+              [tngDatepickerDayGrid]="controller"
+            >
+              @for (cell of datepicker.outputs().cells; track cell.id) {
+                <button
+                  type="button"
+                  class="headless-datepicker-cell"
+                  [tngDatepickerDayCell]="cell"
+                >
+                  {{ cell.label }}
+                </button>
+              }
+            </div>
+          }
+
+          @if (datepicker.outputs().view === 'month') {
+            <div class="headless-datepicker-picker-grid" [tngDatepickerMonthGrid]="controller">
+              @for (option of datepicker.outputs().monthOptions; track option.id) {
+                <button
+                  type="button"
+                  class="headless-datepicker-picker-cell"
+                  [tngDatepickerMonthOption]="option"
+                >
+                  {{ option.label }}
+                </button>
+              }
+            </div>
+          }
+
+          @if (datepicker.outputs().view === 'year') {
+            <div class="headless-datepicker-picker-grid" [tngDatepickerYearGrid]="controller">
+              @for (option of datepicker.outputs().yearOptions; track option.id) {
+                <button
+                  type="button"
+                  class="headless-datepicker-picker-cell"
+                  [tngDatepickerYearOption]="option"
+                >
+                  {{ option.label }}
+                </button>
+              }
+            </div>
+          }
+        </section>
+      </div>
+    </div>
+  </section>
+</section>
+
+<br/>
+<section class="docs-headless-datepicker-examples-booking-plain-card">
+  <span class="docs-headless-datepicker-examples-booking-plain-kicker">Booking window</span>
+  <p class="docs-headless-datepicker-examples-booking-plain-copy">Constrain the selectable booking window without giving up manual input.</p>
+  <section class="booking-window-plain-datepicker-demo" [tngDatepickerHost]="bookingWindowPlainController">
+    <div class="booking-window-plain-datepicker-field" data-slot="datepicker-field">
+      <div #bookingWindowPlainAnchorShell class="booking-window-plain-datepicker-anchor">
+        <div
+          class="booking-window-plain-datepicker-shell"
+          data-slot="datepicker-input-shell"
+          [attr.data-invalid]="bookingWindowPlainDatepicker.outputs().validationError !== null ? 'true' : null"
+          [attr.data-open]="bookingWindowPlainDatepicker.outputs().getTriggerAttributes()['data-open']"
+        >
+          <input
+            class="booking-window-plain-datepicker-input"
+            [tngDatepickerInput]="bookingWindowPlainController"
+            type="text"
+            inputmode="numeric"
+            placeholder="MM-DD-YYYY"
+            aria-label="Booking start date"
+          />
+
+          <button
+            class="booking-window-plain-datepicker-trigger"
+            [tngDatepickerTrigger]="bookingWindowPlainController"
+            type="button"
+            tabindex="-1"
+            aria-label="Open booking calendar"
+          >
+            <tng-icon icon="calendar-days" class="booking-window-plain-datepicker-trigger-icon" />
+            <span class="booking-window-plain-datepicker-trigger-chevron" aria-hidden="true">▾</span>
+          </button>
+        </div>
+
+        <section
+          class="booking-window-plain-datepicker-overlay"
+          [tngDatepickerOverlay]="bookingWindowPlainController"
+          [tngDatepickerOverlayAnchor]="bookingWindowPlainAnchorShell"
+        >
+          <header class="booking-window-plain-datepicker-header" data-slot="datepicker-header">
+            <div class="booking-window-plain-datepicker-header-row">
+              <button class="booking-window-plain-datepicker-nav" [tngDatepickerPrevButton]="bookingWindowPlainController" type="button">‹</button>
+              <button class="booking-window-plain-datepicker-period" [tngDatepickerPeriodButton]="bookingWindowPlainController" type="button">
+                <span class="booking-window-plain-datepicker-period-title">{{ bookingWindowPlainDatepicker.periodLabel() }}</span>
+                @if (bookingWindowPlainDatepicker.outputs().view !== 'year') {
+                  <span class="booking-window-plain-datepicker-period-chevron" aria-hidden="true">▾</span>
+                }
+              </button>
+              <button class="booking-window-plain-datepicker-nav" [tngDatepickerNextButton]="bookingWindowPlainController" type="button">›</button>
+            </div>
+          </header>
+
+          @if (bookingWindowPlainDatepicker.outputs().view === 'day') {
+            <div class="booking-window-plain-datepicker-weekdays" data-slot="datepicker-weekdays" aria-hidden="true">
+              @for (label of bookingWindowPlainDatepicker.outputs().weekdayLabels; track label) {
+                <span data-slot="datepicker-weekday">{{ label }}</span>
+              }
+            </div>
+
+            <div class="booking-window-plain-datepicker-day-grid" [tngDatepickerDayGrid]="bookingWindowPlainController">
+              @for (cell of bookingWindowPlainDatepicker.outputs().cells; track cell.id) {
+                <button class="booking-window-plain-datepicker-cell" [tngDatepickerDayCell]="cell" type="button">
+                  {{ cell.label }}
+                </button>
+              }
+            </div>
+          }
+
+          @if (bookingWindowPlainDatepicker.outputs().view === 'month') {
+            <div class="booking-window-plain-datepicker-picker-grid" [tngDatepickerMonthGrid]="bookingWindowPlainController">
+              @for (option of bookingWindowPlainDatepicker.outputs().monthOptions; track option.id) {
+                <button class="booking-window-plain-datepicker-picker-cell" [tngDatepickerMonthOption]="option" type="button">
+                  {{ option.label }}
+                </button>
+              }
+            </div>
+          }
+
+          @if (bookingWindowPlainDatepicker.outputs().view === 'year') {
+            <div class="booking-window-plain-datepicker-picker-grid" [tngDatepickerYearGrid]="bookingWindowPlainController">
+              @for (option of bookingWindowPlainDatepicker.outputs().yearOptions; track option.id) {
+                <button class="booking-window-plain-datepicker-picker-cell" [tngDatepickerYearOption]="option" type="button">
+                  {{ option.label }}
+                </button>
+              }
+            </div>
+          }
+        </section>
+      </div>
+    </div>
+  </section>
+</section>

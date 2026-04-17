@@ -1,19 +1,111 @@
-<div class="select-root">
-<div class="fd-page">
-  <div class="fd-header">
-    <h2>Select</h2>
-    <p>Single-choice dropdown.</p>
+<section class="docs-headless-selectbox-overview-plain-shell">
+  <div class="docs-headless-selectbox-overview-plain-header">
+    <span class="docs-headless-selectbox-overview-plain-kicker">Workflow stage</span>
+    <p class="docs-headless-selectbox-overview-plain-copy">
+      Primitive-first single selection with an owned trigger and owned overlay rows.
+    </p>
   </div>
 
-  <div class="fd-card">
-    <div class="fd-field">
-      <label for="demo-select">Choose a status</label>
-      <select id="demo-select" defaultValue="in-progress">
-        <option value="not-started">Not started</option>
-        <option value="in-progress">In progress</option>
-        <option value="done">Done</option>
-      </select>
+  <section
+    tngSelect
+    class="docs-headless-selectbox-overview-plain-root"
+    [value]="headlessSelectboxOverviewPlainSelectedStage()"
+    (valueChange)="onHeadlessSelectboxOverviewPlainSelectedStageChange($event)"
+  >
+    <button type="button" tngSelectTrigger class="docs-headless-selectbox-overview-plain-trigger">
+      <span
+        tngSelectValue
+        class="docs-headless-selectbox-overview-plain-value"
+        [attr.data-placeholder]="headlessSelectboxOverviewPlainSelectedStageLabel() === null ? '' : null"
+      >
+        {{ headlessSelectboxOverviewPlainSelectedStageLabel() ?? 'Choose workflow stage' }}
+      </span>
+      <span tngSelectIcon class="docs-headless-selectbox-overview-plain-icon" aria-hidden="true">▾</span>
+    </button>
+
+    <div tngSelectContent class="docs-headless-selectbox-overview-plain-content">
+      <div tngSelectOverlay class="docs-headless-selectbox-overview-plain-overlay">
+        <div
+          tngSelectListbox
+          class="docs-headless-selectbox-overview-plain-listbox"
+          [value]="headlessSelectboxOverviewPlainSelectedStage()"
+          (valueChange)="onHeadlessSelectboxOverviewPlainSelectedStageChange($event)"
+        >
+          @for (stage of headlessSelectboxOverviewPlainWorkflowStages; track stage.value) {
+            <div
+              tngSelectOption
+              class="docs-headless-selectbox-overview-plain-option"
+              [tngValue]="stage.value"
+              [disabled]="stage.disabled === true"
+            >
+              <p class="docs-headless-selectbox-overview-plain-option-label">{{ stage.label }}</p>
+              <p class="docs-headless-selectbox-overview-plain-option-meta">{{ stage.note }}</p>
+            </div>
+          }
+        </div>
+      </div>
     </div>
+  </section>
+
+  <p class="docs-headless-selectbox-overview-plain-summary">
+    Selected: {{ headlessSelectboxOverviewPlainSelectedStageSummary() }}
+  </p>
+</section>
+<br/>
+
+<section class="docs-headless-selectbox-examples-owner-plain-shell">
+  <div class="docs-headless-selectbox-examples-owner-plain-header">
+    <span class="docs-headless-selectbox-examples-owner-plain-kicker">Release owner roster</span>
+    <p class="docs-headless-selectbox-examples-owner-plain-copy">
+      Own the trigger value and option markup directly when the selected state needs richer metadata.
+    </p>
   </div>
-</div>
-</div>
+
+  <section
+    tngSelect
+    class="docs-headless-selectbox-examples-owner-plain-root"
+    [value]="headlessSelectboxExamplesOwnerPlainSelectedOwnerId()"
+    (valueChange)="onHeadlessSelectboxExamplesOwnerPlainSelectedOwnerChange($event)"
+  >
+    <button type="button" tngSelectTrigger class="docs-headless-selectbox-examples-owner-plain-trigger">
+      <span tngSelectValue class="docs-headless-selectbox-examples-owner-plain-value-block">
+        @if (headlessSelectboxExamplesOwnerPlainSelectedOwner(); as owner) {
+          <span class="docs-headless-selectbox-examples-owner-plain-value-label">{{ owner.name }}</span>
+          <span class="docs-headless-selectbox-examples-owner-plain-value-meta">{{ owner.team }} · {{ owner.timezone }}</span>
+        } @else {
+          <span class="docs-headless-selectbox-examples-owner-plain-value-placeholder">Assign release owner</span>
+        }
+      </span>
+      <span tngSelectIcon class="docs-headless-selectbox-examples-owner-plain-icon" aria-hidden="true">▾</span>
+    </button>
+
+    <div tngSelectContent class="docs-headless-selectbox-examples-owner-plain-content">
+      <div tngSelectOverlay class="docs-headless-selectbox-examples-owner-plain-overlay">
+        <div
+          tngSelectListbox
+          class="docs-headless-selectbox-examples-owner-plain-listbox"
+          [value]="headlessSelectboxExamplesOwnerPlainSelectedOwnerId()"
+          (valueChange)="onHeadlessSelectboxExamplesOwnerPlainSelectedOwnerChange($event)"
+        >
+          @for (owner of headlessSelectboxExamplesOwnerPlainReleaseOwners; track owner.id) {
+            <div
+              tngSelectOption
+              class="docs-headless-selectbox-examples-owner-plain-option"
+              [tngValue]="owner.id"
+              [disabled]="owner.disabled === true"
+            >
+              <p class="docs-headless-selectbox-examples-owner-plain-option-label">{{ owner.name }}</p>
+              <p class="docs-headless-selectbox-examples-owner-plain-option-meta">{{ owner.team }} · {{ owner.timezone }}</p>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <p class="docs-headless-selectbox-examples-owner-plain-summary">
+    Selected: {{ headlessSelectboxExamplesOwnerPlainSelectedOwnerSummary() }}
+  </p>
+</section>
+
+<br/>

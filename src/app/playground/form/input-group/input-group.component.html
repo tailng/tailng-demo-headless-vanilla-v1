@@ -1,0 +1,52 @@
+<label class="docs-headless-input-group-overview-plain-card">
+  <span class="docs-headless-input-group-overview-plain-label">Search docs</span>
+  <tng-input-group class="docs-headless-input-group-overview-plain-shell">
+    <span tngPrefix aria-hidden="true" class="docs-headless-input-group-overview-plain-prefix">
+      <tng-icon icon="search" class="docs-headless-input-group-overview-plain-icon"></tng-icon>
+    </span>
+    <input
+      tngInput
+      type="search"
+      placeholder="Search components..."
+      class="docs-headless-input-group-overview-plain-control"
+    />
+    <span tngSuffix class="docs-headless-input-group-overview-plain-meta">Ctrl+K</span>
+  </tng-input-group>
+</label>
+<br/>
+<label class="docs-headless-input-group-styling-plain-field">
+  <span class="docs-headless-input-group-styling-plain-label">Workspace slug</span>
+  <tng-input-group class="docs-headless-input-group-styling-plain-shell">
+    <input
+      tngInput
+      type="text"
+      value="core-platform"
+      class="docs-headless-input-group-styling-plain-control"
+    />
+    <span tngSuffix class="docs-headless-input-group-styling-plain-meta">.tailng.dev</span>
+  </tng-input-group>
+</label>
+<br/>
+<label class="docs-headless-input-group-examples-plain-clear-action-card">
+  <span class="docs-headless-input-group-examples-plain-clear-action-label">Command palette query</span>
+  <tng-input-group class="docs-headless-input-group-examples-plain-clear-action-shell">
+    <span tngPrefix class="docs-headless-input-group-examples-plain-clear-action-prefix">Query</span>
+    <input
+      tngInput
+      type="search"
+      placeholder="Search tokens..."
+      [value]="headlessInputGroupExamplesPlainClearActionQuery()"
+      (input)="onHeadlessInputGroupExamplesPlainClearActionInput($event)"
+      class="docs-headless-input-group-examples-plain-clear-action-control"
+    />
+    <button
+      tngSuffix
+      type="button"
+      class="docs-headless-input-group-examples-plain-clear-action-button"
+      [disabled]="headlessInputGroupExamplesPlainClearActionQuery().length === 0"
+      (click)="clearHeadlessInputGroupExamplesPlainClearActionQuery()"
+    >
+      Clear
+    </button>
+  </tng-input-group>
+</label>

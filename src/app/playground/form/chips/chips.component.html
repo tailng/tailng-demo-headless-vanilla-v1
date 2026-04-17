@@ -1,18 +1,60 @@
-<div class="chips-root">
-<div class="fd-page">
-  <div class="fd-header">
-    <h2>Chips</h2>
-    <p>Compact set of selectable items.</p>
+<section class="docs-headless-chips-overview-plain-shell">
+  <div class="docs-headless-chips-overview-plain-header">
+    <span class="docs-headless-chips-overview-plain-kicker">Selected topics</span>
+    <p class="docs-headless-chips-overview-plain-copy">
+      Primitive-first removable chips with a light shell and a controlled value array.
+    </p>
   </div>
 
-  <div class="fd-card">
-    <div class="fd-chips" aria-label="Selected chips">
-      <div class="fd-chip">Angular</div>
-      <div class="fd-chip">Tailng UI</div>
-      <div class="fd-chip">Accessibility</div>
+  <section
+    tngChips
+    class="docs-headless-chips-overview-plain-root"
+    [tngChipsValues]="headlessChipsOverviewPlainSelectedTopics()"
+    (valuesChange)="onHeadlessChipsOverviewPlainValuesChange($event)"
+    [tngChipsAriaLabel]="'Selected topics'"
+  >
+    <div class="docs-headless-chips-overview-plain-row">
+      @for (topic of headlessChipsOverviewPlainSelectedTopics(); track topic) {
+        <span tngChip [tngChipValue]="topic" [tngChipLabel]="topic" class="docs-headless-chips-overview-plain-chip">
+          <span>{{ topic }}</span>
+          <button tngChipRemove type="button" class="docs-headless-chips-overview-plain-chip-remove">&times;</button>
+        </span>
+      }
     </div>
+  </section>
 
-    <div class="fd-hint">Static chip demo.</div>
+  <p class="docs-headless-chips-overview-plain-summary">Selected: {{ headlessChipsOverviewPlainSummary() }}</p>
+</section>
+<br/>
+<section class="docs-headless-chips-examples-locked-plain-shell">
+  <div class="docs-headless-chips-examples-locked-plain-header">
+    <span class="docs-headless-chips-examples-locked-plain-kicker">Release lanes</span>
+    <p class="docs-headless-chips-examples-locked-plain-copy">
+      Disabled chips stay visible, but only active lanes remain removable.
+    </p>
   </div>
-</div>
-</div>
+
+  <section tngChips
+    class="docs-headless-chips-examples-locked-plain-control"
+    [tngChipsValues]="headlessChipsExamplesPlainReleaseLanes()"
+    (valuesChange)="onHeadlessChipsExamplesPlainReleaseLanesChange($event)"
+    [tngChipsAriaLabel]="'Release lanes'"
+  >
+    <div class="docs-headless-chips-examples-locked-plain-row">
+      @for (lane of headlessChipsExamplesPlainReleaseLanes(); track lane) {
+        <span
+          tngChip
+          [tngChipValue]="lane"
+          [tngChipLabel]="lane"
+          [tngChipDisabled]="isHeadlessChipsExamplesPlainReleaseLaneLocked(lane)"
+          class="docs-headless-chips-examples-locked-plain-chip"
+        >
+          <span>{{ lane }}</span>
+          <button tngChipRemove type="button" class="docs-headless-chips-examples-locked-plain-chip-remove">&times;</button>
+        </span>
+      }
+    </div>
+  </section>
+
+  <p class="docs-headless-chips-examples-locked-plain-summary">Selected: {{ headlessChipsExamplesPlainReleaseLaneSummary() }}</p>
+</section>

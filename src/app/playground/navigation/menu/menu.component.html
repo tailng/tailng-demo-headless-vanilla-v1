@@ -1,1 +1,85 @@
-<div class="menu-root"></div>
+<section class="headless-menu-overview-plain-card">
+  <span class="headless-menu-overview-plain-kicker">Actions menu</span>
+  <p class="headless-menu-overview-plain-copy">A single trigger opens a panel; you control placement and elevation with CSS.</p>
+
+  <div class="headless-menu-overview-plain-stage">
+    <div class="headless-menu-overview-plain-trigger-shell">
+      <button type="button" [tngMenuTrigger]="overviewPlainMenu">Open menu</button>
+      <div
+        tngMenu
+        #overviewPlainMenu="tngMenu"
+        aria-label="Actions"
+        class="headless-menu-overview-plain-menu"
+        (tngMenuSelect)="onOverviewPlainCommandSelect($event)"
+      >
+        <div tngMenuGroupLabel class="headless-menu-overview-plain-group">Actions</div>
+        <button type="button" tngMenuItem tngMenuItemValue="duplicate">Duplicate</button>
+        <button type="button" tngMenuItem tngMenuItemValue="rename">Rename</button>
+        <div tngMenuSeparator class="headless-menu-overview-plain-separator"></div>
+        <button type="button" tngMenuItem tngMenuItemValue="delete">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="headless-menu-overview-plain-state">Last command: <strong>{{ overviewPlainLastCommand() }}</strong></p>
+</section>
+
+<br/>
+
+<div class="headless-menu-example-drop-plain-stage">
+  <div class="headless-menu-example-drop-plain-shell">
+    <button type="button" [tngMenuTrigger]="dropdownPlainActionsMenu">Open actions</button>
+    <div
+      tngMenu
+      #dropdownPlainActionsMenu="tngMenu"
+      aria-label="Quick actions"
+      class="headless-menu-example-drop-plain-menu"
+      (tngMenuSelect)="onDropdownPlainActionSelect($event)"
+    >
+      <div tngMenuGroupLabel class="headless-menu-example-drop-plain-group">Recent</div>
+      <button type="button" tngMenuItem tngMenuItemValue="copy">Copy</button>
+      <button type="button" tngMenuItem tngMenuItemValue="paste">Paste</button>
+    </div>
+  </div>
+</div>
+
+<br/>
+<div class="headless-menu-example-nested-plain-stage">
+  <div class="headless-menu-example-nested-plain-shell">
+    <button type="button" [tngMenuTrigger]="nestedPlainFileMenu">File</button>
+    <div
+      tngMenu
+      #nestedPlainFileMenu="tngMenu"
+      aria-label="File menu"
+      class="headless-menu-example-nested-plain-menu"
+      (tngMenuSelect)="onNestedPlainCommandSelect($event)"
+    >
+      <button type="button" tngMenuItem tngMenuItemValue="new-notebook">New notebook</button>
+      <button type="button" tngMenuItem [tngMenuItemSubmenu]="nestedPlainImportMenu" tngMenuItemValue="import">Import…</button>
+      <div tngMenuSeparator class="headless-menu-example-nested-plain-separator"></div>
+      <button type="button" tngMenuItem tngMenuItemValue="close">Close</button>
+
+      <div
+        tngMenu
+        #nestedPlainImportMenu="tngMenu"
+        aria-label="Import sources"
+        class="headless-menu-example-nested-plain-menu headless-menu-example-nested-plain-menu--submenu headless-menu-example-nested-plain-menu--level-1"
+        (tngMenuSelect)="onNestedPlainCommandSelect($event)"
+      >
+        <button type="button" tngMenuItem tngMenuItemValue="csv">CSV file</button>
+        <button type="button" tngMenuItem [tngMenuItemSubmenu]="nestedPlainGitMenu" tngMenuItemValue="git">Git repository</button>
+      </div>
+
+      <div
+        tngMenu
+        #nestedPlainGitMenu="tngMenu"
+        aria-label="Git hosts"
+        class="headless-menu-example-nested-plain-menu headless-menu-example-nested-plain-menu--submenu headless-menu-example-nested-plain-menu--level-2"
+        (tngMenuSelect)="onNestedPlainCommandSelect($event)"
+      >
+        <button type="button" tngMenuItem tngMenuItemValue="github">GitHub</button>
+        <button type="button" tngMenuItem tngMenuItemValue="gitlab">GitLab</button>
+      </div>
+    </div>
+  </div>
+</div>

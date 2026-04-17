@@ -1,0 +1,59 @@
+<div class="input-root">
+  <div class="fd-page">
+    <div class="fd-field">
+      <div class="demo-label">Normal</div>
+      <input tngInput type="text" value="Nitrogen" class="demo-normal-input" />
+    </div>
+
+    <div class="fd-field">
+      <div class="account-profile-example-fields">
+        <label class="account-profile-example-field-surface account-profile-example-field-surface--headless">
+          <span class="account-profile-example-field-label">Display name</span>
+          <div tngInputGroup class="account-profile-example-shell">
+            <span tngPrefix aria-hidden="true">@</span>
+            <input tngInput type="text" value="Ada Lovelace" aria-label="Display name" />
+            <button tngSuffix type="button" aria-label="Clear">X</button>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="fd-field">
+      <div tngInputGroup class="command-search-shell">
+        <span tngPrefix aria-hidden="true" class="command-search-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20" focusable="false" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+          </svg>
+        </span>
+        <input tngInput type="text" placeholder="Search components..." aria-label="Search components" />
+        <kbd tngSuffix class="command-search-shortcut" aria-hidden="true">Ctrl+K</kbd>
+      </div>
+    </div>
+
+    <div class="fd-field">
+      <div tngInputGroup class="domain-shell">
+        <input tngInput type="text" value="core-platform" aria-label="Subdomain" />
+        <span tngSuffix class="domain-suffix" aria-hidden="true">.tailng.dev</span>
+      </div>
+    </div>
+
+    <div class="fd-field">
+      <div tngInputGroup class="input-example-headless-shell">
+        <span tngPrefix aria-hidden="true" class="input-api-prefix">
+          <tng-icon icon="search" class="input-example-icon" />
+        </span>
+        <input
+          tngInput
+          type="search"
+          placeholder="Search docs..."
+          aria-label="Search docs"
+          class="input-api-control"
+        />
+        <button tngSuffix type="button" class="input-api-icon-button" aria-label="Clear search">
+          <tng-icon icon="x" class="input-example-icon" />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

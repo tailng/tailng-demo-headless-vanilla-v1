@@ -1,252 +1,162 @@
-
-.listbox-root {
-  max-width: 52rem;
-  margin: 0 auto;
-  padding: 1.5rem 1.25rem 2.5rem;
+/* Overview page example styles */
+.headless-listbox-overview-example {
+  display: grid;
+  gap: 0.75rem;
+  inline-size: min(100%, 30rem);
+  margin-inline: auto;
+  padding: 1rem;
+  border: 1px solid var(--tng-semantic-border-subtle, #cbd5e1);
+  border-radius: 1rem;
+  background: var(--tng-semantic-background-surface, #ffffff);
+  color: var(--tng-semantic-foreground-primary, #0f172a);
+  color-scheme: light;
 }
 
-.fd-page {
-  display: flex;
-  flex-direction: column;
+.headless-listbox-overview-example__listbox {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--tng-semantic-border-subtle, #cbd5e1);
+  border-radius: 0.85rem;
+  background: var(--tng-semantic-background-canvas, #f8fafc);
+  outline: none;
+}
+
+.headless-listbox-overview-example__listbox:focus {
+  border-color: var(--tng-semantic-accent-brand, #2563eb);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--tng-semantic-accent-brand, #2563eb) 28%, transparent);
+}
+
+.headless-listbox-overview-example__option {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--tng-semantic-border-subtle, #cbd5e1);
+  border-radius: 0.75rem;
+  background: var(--tng-semantic-background-surface, #ffffff);
+  cursor: pointer;
+  transition:
+    border-color 120ms ease,
+    background-color 120ms ease,
+    opacity 120ms ease;
+}
+
+.headless-listbox-overview-example__option[data-active] {
+  border-color: var(--tng-semantic-accent-brand, #2563eb);
+}
+
+.headless-listbox-overview-example__option[data-selected] {
+  background: color-mix(in srgb, var(--tng-semantic-accent-brand, #2563eb) 15%, white);
+}
+
+.headless-listbox-overview-example__option[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.56;
+}
+
+.headless-listbox-overview-example__title {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--tng-semantic-foreground-primary, #0f172a);
+}
+
+.headless-listbox-overview-example__description {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--tng-semantic-foreground-secondary, #475569);
+}
+
+.headless-listbox-overview-example__summary {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--tng-semantic-foreground-secondary, #475569);
+}
+/* Dual handoff example styles */
+.headless-listbox-dual-handoff-example {
+  display: grid;
+  gap: 1rem;
+  color: var(--tng-semantic-foreground-primary, #0f172a);
+  color-scheme: light;
+}
+
+.headless-listbox-dual-handoff-example__grid {
+  display: grid;
   gap: 1rem;
 }
 
-.fd-header {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.fd-header h2 {
-  margin: 0;
-  font-size: 1.6rem;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-}
-
-.fd-header p {
-  margin: 0;
-  color: rgba(28, 25, 23, 0.78);
-  max-width: 70ch;
-}
-
-.fd-card {
-  background: #ffffff;
-  border: 1px solid rgba(28, 25, 23, 0.1);
-  border-radius: 16px;
-  padding: 1.15rem;
-  box-shadow:
-    0 1px 2px rgba(28, 25, 23, 0.04),
-    0 12px 30px rgba(28, 25, 23, 0.05);
-}
-
-.fd-field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  margin-bottom: 1rem;
-}
-
-.fd-field:last-child {
-  margin-bottom: 0;
-}
-
-.fd-field label {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: rgba(28, 25, 23, 0.92);
-}
-
-.fd-required {
-  color: #0f766e;
-  margin-right: 0.25rem;
-}
-
-.fd-hint {
-  font-size: 0.85rem;
-  color: rgba(28, 25, 23, 0.68);
-}
-
-input[type='text'],
-input[type='email'],
-input[list],
-input:not([type]),
-textarea,
-select {
-  font: inherit;
-  color: rgba(28, 25, 23, 0.95);
-  background: #fbfbfa;
-  border: 1px solid rgba(28, 25, 23, 0.14);
-  border-radius: 12px;
-  padding: 0.6rem 0.75rem;
-}
-
-input[type='text']:focus,
-input[type='email']:focus,
-input[list]:focus,
-input:not([type]):focus,
-textarea:focus,
-select:focus {
-  outline: none;
-  border-color: rgba(15, 118, 110, 0.6);
-  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
-}
-
-textarea {
-  resize: vertical;
-}
-
-.fd-options {
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-}
-
-.fd-option {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  padding: 0.4rem 0.45rem;
-  border-radius: 12px;
-}
-
-.fd-option input {
-  width: 16px;
-  height: 16px;
-}
-
-.fd-option--disabled {
-  opacity: 0.6;
-}
-
-.fd-option--mixed {
-  border: 1px dashed rgba(28, 25, 23, 0.2);
-  background: rgba(245, 245, 244, 0.6);
-  padding: 0.55rem 0.65rem;
-  width: fit-content;
-}
-
-.fd-switch {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.5rem;
-  border-radius: 14px;
-  border: 1px solid rgba(28, 25, 23, 0.1);
-}
-
-.fd-switch input {
-  width: 18px;
-  height: 18px;
-}
-
-.fd-switch--disabled {
-  opacity: 0.55;
-}
-
-.fd-toggle-row {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.fd-toggle {
-  border-radius: 999px;
-  border: 1px solid rgba(28, 25, 23, 0.15);
-  background: #fbfbfa;
-  padding: 0.55rem 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.fd-toggle--on {
-  border-color: rgba(15, 118, 110, 0.55);
-  color: #0f766e;
-  background: rgba(15, 118, 110, 0.08);
-}
-
-.fd-toggle--disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-}
-
-.fd-segment {
-  display: inline-flex;
-  gap: 0;
-  border: 1px solid rgba(28, 25, 23, 0.14);
-  border-radius: 14px;
-  overflow: hidden;
-}
-
-.fd-segment-btn {
-  border: 0;
-  background: transparent;
-  padding: 0.65rem 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.fd-segment-btn--on {
-  background: rgba(15, 118, 110, 0.1);
-  color: #0f766e;
-}
-
-.fd-segment-btn--disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-}
-
-.fd-segment-btn + .fd-segment-btn {
-  border-left: 1px solid rgba(28, 25, 23, 0.1);
-}
-
-.fd-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-
-.fd-chip {
-  padding: 0.45rem 0.65rem;
-  border: 1px solid rgba(28, 25, 23, 0.12);
-  border-radius: 999px;
-  background: rgba(250, 250, 249, 1);
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-.fd-otp {
+.headless-listbox-dual-handoff-example__card {
   display: grid;
-  grid-template-columns: repeat(6, 3.1rem);
-  gap: 0.65rem;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--tng-semantic-border-subtle, #cbd5e1);
+  border-radius: 1rem;
+  background: var(--tng-semantic-background-surface, #ffffff);
 }
 
-.fd-otp input {
-  text-align: center;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+.headless-listbox-dual-handoff-example__title {
+  margin: 0;
+  font-size: 1rem;
   font-weight: 700;
+  color: var(--tng-semantic-foreground-primary, #0f172a);
 }
 
-.fd-otp--disabled {
-  opacity: 0.6;
+.headless-listbox-dual-handoff-example__listbox {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--tng-semantic-border-subtle, #cbd5e1);
+  border-radius: 0.9rem;
+  background: var(--tng-semantic-background-canvas, #f8fafc);
+  outline: none;
 }
 
-.fd-range-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: rgba(28, 25, 23, 0.72);
-  font-size: 0.9rem;
-  margin-top: 0.4rem;
+.headless-listbox-dual-handoff-example__listbox:focus {
+  border-color: var(--tng-semantic-accent-brand, #2563eb);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--tng-semantic-accent-brand, #2563eb) 28%, transparent);
 }
 
-.fd-range-value {
-  font-weight: 700;
-  color: rgba(28, 25, 23, 0.95);
+.headless-listbox-dual-handoff-example__option {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--tng-semantic-border-subtle, #cbd5e1);
+  border-radius: 0.8rem;
+  background: var(--tng-semantic-background-surface, #ffffff);
+  cursor: pointer;
+  transition: border-color 120ms ease, background-color 120ms ease;
 }
 
-@media (max-width: 560px) {
-  .fd-otp {
-    grid-template-columns: repeat(3, 1fr);
+.headless-listbox-dual-handoff-example__option[data-active] {
+  border-color: var(--tng-semantic-accent-brand, #2563eb);
+}
+
+.headless-listbox-dual-handoff-example__option[data-selected] {
+  background: color-mix(in srgb, var(--tng-semantic-accent-brand, #2563eb) 15%, white);
+}
+
+.headless-listbox-dual-handoff-example__option-title {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--tng-semantic-foreground-primary, #0f172a);
+}
+
+.headless-listbox-dual-handoff-example__option-description {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--tng-semantic-foreground-secondary, #475569);
+}
+
+.headless-listbox-dual-handoff-example__summary {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--tng-semantic-foreground-secondary, #475569);
+}
+
+@media (min-width: 64rem) {
+  .headless-listbox-dual-handoff-example__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

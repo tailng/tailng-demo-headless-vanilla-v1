@@ -1,29 +1,49 @@
-<div class="radio-root">
-<div class="fd-page">
-  <div class="fd-header">
-    <h2>Radio</h2>
-    <p>Grouped single-select options.</p>
-  </div>
+<fieldset class="headless-radio-plan-card">
+  <legend class="headless-radio-plan-card__legend">Billing plan</legend>
+  <label class="headless-radio-plan-card__row">
+    <input
+      type="radio"
+      tngRadio
+      name="billing-plan"
+      [checked]="selectedPlan() === 'starter'"
+      (change)="onPlanChange('starter', $event)"
+      class="headless-radio-plan-card__control"
+    />
+    <span>Starter</span>
+  </label>
+  <label class="headless-radio-plan-card__row">
+    <input
+      type="radio"
+      tngRadio
+      name="billing-plan"
+      [checked]="selectedPlan() === 'pro'"
+      (change)="onPlanChange('pro', $event)"
+      class="headless-radio-plan-card__control"
+    />
+    <span>Pro</span>
+  </label>
+  <label class="headless-radio-plan-card__row">
+    <input
+      type="radio"
+      tngRadio
+      name="billing-plan"
+      [checked]="selectedPlan() === 'enterprise'"
+      (change)="onPlanChange('enterprise', $event)"
+      class="headless-radio-plan-card__control"
+    />
+    <span>Enterprise</span>
+  </label>
+  <p class="headless-radio-plan-card__summary">Selected: {{ selectedPlan() }}</p>
+</fieldset>
 
-  <div class="fd-card">
-    <fieldset>
-      <legend>Choose one</legend>
-
-      <label class="fd-option">
-        <input type="radio" name="demo-radio" checked />
-        <span>Option A</span>
-      </label>
-
-      <label class="fd-option">
-        <input type="radio" name="demo-radio" />
-        <span>Option B</span>
-      </label>
-
-      <label class="fd-option fd-option--disabled">
-        <input type="radio" name="demo-radio" disabled />
-        <span>Disabled option</span>
-      </label>
-    </fieldset>
-  </div>
-</div>
-</div>
+<fieldset class="headless-radio-filter-card">
+  <legend class="headless-radio-filter-card__legend">Release target</legend>
+  <label class="headless-radio-filter-card__row">
+    <input type="radio" tngRadio name="release-target" [checked]="true" class="headless-radio-filter-card__control" />
+    <span>Production release</span>
+  </label>
+  <label class="headless-radio-filter-card__row headless-radio-filter-card__row--invalid">
+    <input type="radio" tngRadio name="release-target" [invalid]="true" class="headless-radio-filter-card__control" />
+    <span>Needs compliance approval</span>
+  </label>
+</fieldset>

@@ -105,7 +105,7 @@ export const routes: Routes = [
   {
     path: 'input',
     loadComponent: () =>
-      import('./playground/form/input/input.component').then((m) => m.InputComponent),
+      import('./playground/form/input/input-demo.component').then((m) => m.InputDemoComponent),
   },
   {
     path: 'label',
@@ -233,9 +233,14 @@ export const routes: Routes = [
       import('./playground/form/chips/chips.component').then((m) => m.ChipsComponent),
   },
   {
-    path: 'combobox',
+    path: 'datepicker',
     loadComponent: () =>
-      import('./playground/form/combobox/combobox.component').then((m) => m.ComboboxComponent),
+      import('./playground/form/datepicker/datepicker.component').then((m) => m.DatepickerComponent),
+  },
+  {
+    path: 'input-group',
+    loadComponent: () =>
+      import('./playground/form/input-group/input-group.component').then((m) => m.InputGroupComponent),
   },
   {
     path: 'select',

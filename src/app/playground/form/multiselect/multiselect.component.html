@@ -1,23 +1,99 @@
-<div class="multiselect-root">
-<div class="fd-page">
-  <div class="fd-header">
-    <h2>Multiselect</h2>
-    <p>Multiple-choice list (static).</p>
+<section class="docs-headless-multiselect-overview-plain-shell">
+  <div class="docs-headless-multiselect-overview-plain-header">
+    <span class="docs-headless-multiselect-overview-plain-kicker">Planets</span>
+    <p class="docs-headless-multiselect-overview-plain-copy">
+      Primitive-first multi-selection with an owned trigger and owned overlay rows.
+    </p>
   </div>
 
-  <div class="fd-card">
-    <div class="fd-field">
-      <label for="demo-multiselect">Pick multiple</label>
-      <select id="demo-multiselect" multiple size="5">
-        <option selected>Option A</option>
-        <option>Option B</option>
-        <option selected>Option C</option>
-        <option>Option D</option>
-        <option>Option E</option>
-      </select>
+  <section
+    tngMultiSelect
+    class="docs-headless-multiselect-overview-plain-root"
+    [value]="selectedPlanets()"
+    (valueChange)="onValueChange($event)"
+  >
+    <button type="button" tngSelectTrigger class="docs-headless-multiselect-overview-plain-trigger">
+      <span tngSelectValue class="docs-headless-multiselect-overview-plain-value">
+        {{ selectedSummary() }}
+      </span>
+      <span tngSelectIcon class="docs-headless-multiselect-overview-plain-icon" aria-hidden="true">▾</span>
+    </button>
+
+    <div tngSelectContent class="docs-headless-multiselect-overview-plain-content">
+      <div tngSelectOverlay class="docs-headless-multiselect-overview-plain-overlay">
+        <ul
+          tngMultiSelectListbox
+          class="docs-headless-multiselect-overview-plain-listbox"
+          [multiple]="true"
+          [value]="selectedPlanets()"
+        >
+          @for (planet of planets; track planet.value) {
+            <li
+              tngMultiSelectOption
+              class="docs-headless-multiselect-overview-plain-option"
+              [tngValue]="planet.value"
+              [disabled]="planet.disabled === true"
+            >
+              {{ planet.label }}
+            </li>
+          }
+        </ul>
+      </div>
     </div>
+  </section>
 
-    <div class="fd-hint">Selected: Option A, Option C</div>
+  <p class="docs-headless-multiselect-overview-plain-summary">
+    Selected: {{ selectedSummary() }}
+  </p>
+</section>
+<br/>
+<section class="tag-group-shell">
+  <div class="tag-group-header">
+    <span class="tag-group-kicker">Tag group roster</span>
+    <p class="tag-group-copy">
+      Use Tab to move between controls; each multiselect keeps independent roving option state.
+    </p>
   </div>
-</div>
-</div>
+
+  <div class="tag-group-grid">
+    <section class="tag-group-card">
+      <h4 class="tag-group-card-title">Tag group A</h4>
+      <section tngMultiSelect class="tag-group-root" [value]="tagValueA()" (valueChange)="onTagAValueChange($event)">
+        <button type="button" tngSelectTrigger class="tag-group-trigger">
+          <span tngSelectValue class="tag-group-value">{{ tagSummaryA() }}</span>
+          <span tngSelectIcon class="tag-group-icon" aria-hidden="true">▾</span>
+        </button>
+        <div tngSelectContent class="tag-group-content">
+          <div tngSelectOverlay class="tag-group-overlay">
+            <ul tngMultiSelectListbox class="tag-group-listbox" [multiple]="true" [value]="tagValueA()">
+              @for (tag of tagOptions; track tag.value) {
+                <li tngMultiSelectOption class="tag-group-option" [tngValue]="tag.value">{{ tag.label }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+      </section>
+      <p class="tag-group-summary">Selected: {{ tagSummaryA() }}</p>
+    </section>
+
+    <section class="tag-group-card">
+      <h4 class="tag-group-card-title">Tag group B</h4>
+      <section tngMultiSelect class="tag-group-root" [value]="tagValueB()" (valueChange)="onTagBValueChange($event)">
+        <button type="button" tngSelectTrigger class="tag-group-trigger">
+          <span tngSelectValue class="tag-group-value">{{ tagSummaryB() }}</span>
+          <span tngSelectIcon class="tag-group-icon" aria-hidden="true">▾</span>
+        </button>
+        <div tngSelectContent class="tag-group-content">
+          <div tngSelectOverlay class="tag-group-overlay">
+            <ul tngMultiSelectListbox class="tag-group-listbox" [multiple]="true" [value]="tagValueB()">
+              @for (tag of tagOptions; track tag.value) {
+                <li tngMultiSelectOption class="tag-group-option" [tngValue]="tag.value">{{ tag.label }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+      </section>
+      <p class="tag-group-summary">Selected: {{ tagSummaryB() }}</p>
+    </section>
+  </div>
+</section>

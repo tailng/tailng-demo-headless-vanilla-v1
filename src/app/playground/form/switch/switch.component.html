@@ -1,27 +1,44 @@
-<div class="switch-root">
-<div class="fd-page">
-  <div class="fd-header">
-    <h2>Switch</h2>
-    <p>Two-state on/off control.</p>
-  </div>
-
-  <div class="fd-card">
-    <div class="fd-options">
-      <label class="fd-switch">
-        <input type="checkbox" checked />
-        <span>Enabled</span>
-      </label>
-
-      <label class="fd-switch">
-        <input type="checkbox" />
-        <span>Disabled</span>
-      </label>
-
-      <label class="fd-switch fd-switch--disabled">
-        <input type="checkbox" disabled />
-        <span>Read-only</span>
-      </label>
+<section class="headless-switch-release-shell">
+  <div class="headless-switch-release-shell__row">
+    <button
+      tngSwitch
+      class="headless-switch-release-shell__control"
+      [checked]="releaseReady()"
+      ariaLabel="Release ready"
+      (click)="onReleaseReadyToggle()"
+    >
+      <span class="headless-switch-release-shell__thumb" aria-hidden="true"></span>
+    </button>
+    <div class="headless-switch-release-shell__copy">
+      <span class="headless-switch-release-shell__title">Release ready</span>
+      <span class="headless-switch-release-shell__meta">Ship after QA sign-off.</span>
     </div>
   </div>
-</div>
-</div>
+</section>
+<br/>
+<section class="headless-switch-state-card">
+  <div class="headless-switch-state-card__row">
+    <span class="headless-switch-state-card__title">Emergency cutoff</span>
+    <button
+      tngSwitch
+      class="headless-switch-state-card__control"
+      [checked]="true"
+      [required]="true"
+      ariaLabel="Emergency cutoff"
+    >
+      <span class="headless-switch-state-card__thumb" aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="headless-switch-state-card__row headless-switch-state-card__row--disabled">
+    <span class="headless-switch-state-card__title">Production bypass</span>
+    <button
+      tngSwitch
+      class="headless-switch-state-card__control"
+      [checked]="false"
+      [disabled]="true"
+      ariaLabel="Production bypass"
+    >
+      <span class="headless-switch-state-card__thumb" aria-hidden="true"></span>
+    </button>
+  </div>
+</section>

@@ -1,21 +1,162 @@
-<div class="multi-autocomplete-root">
-<div class="fd-page">
-  <div class="fd-header">
-    <h2>Multi Autocomplete</h2>
-    <p>Chips input with multi-select suggestions (static demo).</p>
+<section class="docs-headless-multi-autocomplete-overview-plain-shell">
+  <div class="docs-headless-multi-autocomplete-overview-plain-header">
+    <span class="docs-headless-multi-autocomplete-overview-plain-kicker">Launch markets</span>
+    <p class="docs-headless-multi-autocomplete-overview-plain-copy">
+      Primitive-first shell with chips that stay visible while the trigger query filters the list.
+    </p>
   </div>
 
-  <div class="fd-card">
-    <div class="fd-field">
-      <label for="demo-multi-autocomplete">Add tags</label>
-      <input id="demo-multi-autocomplete" placeholder="Type and press Enter (static)" />
-    </div>
+  <section
+    tngMultiAutocomplete
+    class="docs-headless-multi-autocomplete-overview-plain-control"
+    [open]="headlessOverviewPlainLaunchMarketsOpen()"
+    (openChange)="headlessOverviewPlainLaunchMarketsOpen.set($event)"
+    [query]="headlessOverviewPlainLaunchMarketsQuery()"
+    (queryChange)="headlessOverviewPlainLaunchMarketsQuery.set($event)"
+    [value]="headlessOverviewPlainSelectedMarketCodes()"
+    (valueChange)="onHeadlessOverviewPlainLaunchMarketsValueChange($event)"
+  >
+    @for (code of headlessOverviewPlainSelectedMarketCodes(); track code) {
+      <span
+        tngMultiAutocompleteChip
+        class="docs-headless-multi-autocomplete-overview-plain-chip"
+        [tngValue]="code"
+      >
+        {{ resolveHeadlessOverviewPlainLaunchMarketLabel(code) }}
+      </span>
+    }
 
-    <div class="fd-chips" aria-label="Selected tags">
-      <div class="fd-chip">Frontend</div>
-      <div class="fd-chip">Forms</div>
-      <div class="fd-chip">Navigation</div>
+    <input
+      tngMultiAutocompleteTrigger
+      type="text"
+      [value]="headlessOverviewPlainLaunchMarketsQuery()"
+      (input)="onHeadlessOverviewPlainLaunchMarketsInput($event)"
+      placeholder="Type Ind to filter"
+      aria-label="Launch markets"
+    />
+
+    <div
+      tngMultiAutocompleteContent
+      class="docs-headless-multi-autocomplete-overview-plain-content"
+    >
+      <div class="docs-headless-multi-autocomplete-overview-plain-overlay" tngMultiAutocompleteOverlay>
+        <ul tngMultiAutocompleteListbox [value]="headlessOverviewPlainSelectedMarketCodes()">
+          @for (market of headlessOverviewPlainFilteredLaunchMarkets(); track market.code) {
+            <li
+              tngMultiAutocompleteOption
+              class="docs-headless-multi-autocomplete-overview-plain-option"
+              [tngValue]="market.code"
+            >
+              <span>{{ market.label }}</span>
+              <small>{{ market.region }}</small>
+            </li>
+          }
+        </ul>
+      </div>
     </div>
+  </section>
+
+  <p class="docs-headless-multi-autocomplete-overview-plain-summary">
+    Selected: {{ headlessOverviewPlainSelectedMarketSummary() }}
+  </p>
+</section>
+<br/>
+
+<section class="docs-headless-multi-autocomplete-styling-plain-shell">
+  <div class="docs-headless-multi-autocomplete-styling-plain-header">
+    <span class="docs-headless-multi-autocomplete-styling-plain-kicker">Release owners</span>
+    <p class="docs-headless-multi-autocomplete-styling-plain-copy">
+      Keep the primitive native while your wrapper card and option rows carry the visual style.
+    </p>
   </div>
-</div>
-</div>
+
+  <section
+    tngMultiAutocomplete
+    class="docs-headless-multi-autocomplete-styling-plain-control"
+    [open]="headlessStylingPlainReleaseOwnersOpen()"
+    (openChange)="headlessStylingPlainReleaseOwnersOpen.set($event)"
+    [query]="headlessStylingPlainReleaseOwnerQuery()"
+    (queryChange)="headlessStylingPlainReleaseOwnerQuery.set($event)"
+    [value]="headlessStylingPlainSelectedOwnerIds()"
+    (valueChange)="onHeadlessStylingPlainReleaseOwnerValueChange($event)"
+  >
+    @for (id of headlessStylingPlainSelectedOwnerIds(); track id) {
+      <span tngMultiAutocompleteChip [tngValue]="id">{{ resolveHeadlessStylingPlainReleaseOwnerLabel(id) }}</span>
+    }
+
+    <input
+      tngMultiAutocompleteTrigger
+      type="text"
+      [value]="headlessStylingPlainReleaseOwnerQuery()"
+      (input)="onHeadlessStylingPlainReleaseOwnerInput($event)"
+      placeholder="Search release owners"
+      aria-label="Release owners"
+    />
+
+    <div tngMultiAutocompleteContent class="contents">
+      <div class="docs-headless-multi-autocomplete-styling-plain-overlay" tngMultiAutocompleteOverlay>
+        <ul tngMultiAutocompleteListbox [value]="headlessStylingPlainSelectedOwnerIds()">
+          @for (owner of headlessStylingPlainFilteredReleaseOwners(); track owner.id) {
+            <li
+              tngMultiAutocompleteOption
+              class="docs-headless-multi-autocomplete-styling-plain-option"
+              [tngValue]="owner.id"
+              [disabled]="isHeadlessStylingPlainReleaseOwnerDisabled(owner)"
+            >
+              <span>{{ owner.name }}</span>
+              <small>{{ owner.team }}</small>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+</section>
+<br/>
+<section class="docs-headless-multi-autocomplete-launch-markets-plain-shell">
+  <div class="docs-headless-multi-autocomplete-launch-markets-plain-header">
+    <span class="docs-headless-multi-autocomplete-launch-markets-plain-kicker">Launch markets</span>
+    <p class="docs-headless-multi-autocomplete-launch-markets-plain-copy">
+      Pick multiple launch regions while keeping chips visible in the owned shell.
+    </p>
+  </div>
+
+  <section
+    tngMultiAutocomplete
+    class="docs-headless-multi-autocomplete-launch-markets-plain-control"
+    [open]="headlessExamplesPlainLaunchMarketsOpen()"
+    (openChange)="headlessExamplesPlainLaunchMarketsOpen.set($event)"
+    [query]="headlessExamplesPlainLaunchMarketsQuery()"
+    (queryChange)="headlessExamplesPlainLaunchMarketsQuery.set($event)"
+    [value]="headlessExamplesPlainSelectedMarketCodes()"
+    (valueChange)="onHeadlessExamplesPlainLaunchMarketsValueChange($event)"
+  >
+    @for (code of headlessExamplesPlainSelectedMarketCodes(); track code) {
+      <span tngMultiAutocompleteChip [tngValue]="code">{{ resolveHeadlessExamplesPlainLaunchMarketLabel(code) }}</span>
+    }
+
+    <input
+      tngMultiAutocompleteTrigger
+      type="text"
+      [value]="headlessExamplesPlainLaunchMarketsQuery()"
+      (input)="onHeadlessExamplesPlainLaunchMarketsInput($event)"
+      placeholder="Search launch markets"
+      aria-label="Launch markets"
+    />
+
+    <div tngMultiAutocompleteContent class="docs-headless-multi-autocomplete-launch-markets-plain-content">
+      <div class="docs-headless-multi-autocomplete-launch-markets-plain-overlay" tngMultiAutocompleteOverlay>
+        <ul tngMultiAutocompleteListbox class="docs-headless-multi-autocomplete-launch-markets-plain-listbox" [value]="headlessExamplesPlainSelectedMarketCodes()">
+          @for (market of headlessExamplesPlainFilteredLaunchMarkets(); track market.code) {
+            <li tngMultiAutocompleteOption class="docs-headless-multi-autocomplete-launch-markets-plain-option" [tngValue]="market.code">
+              <span>{{ market.label }}</span>
+              <small>{{ market.region }}</small>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <p class="docs-headless-multi-autocomplete-launch-markets-plain-summary">Selected: {{ headlessExamplesPlainSelectedMarketSummary() }}</p>
+</section>

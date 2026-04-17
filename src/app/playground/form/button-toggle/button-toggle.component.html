@@ -1,16 +1,52 @@
-<div class="button-toggle-root">
-<div class="fd-page">
-  <div class="fd-header">
-    <h2>Button Toggle</h2>
-    <p>Toggleable button options (single selection demo).</p>
+<section class="headless-button-toggle-density-shell">
+  <span class="headless-button-toggle-density-shell__label">Density</span>
+  <div
+    tngButtonToggleGroup
+    class="headless-button-toggle-density-shell__group"
+    type="single"
+    [tngButtonToggleValue]="density()"
+    (valueChange)="onDensityChange($event)"
+  >
+    <button tngButtonToggle tngButtonToggleValue="compact" class="headless-button-toggle-density-shell__item">Compact</button>
+    <button tngButtonToggle tngButtonToggleValue="comfortable" class="headless-button-toggle-density-shell__item">Comfortable</button>
+    <button tngButtonToggle tngButtonToggleValue="spacious" class="headless-button-toggle-density-shell__item">Spacious</button>
   </div>
-
-  <div class="fd-card">
-    <div class="fd-segment" role="radiogroup" aria-label="Button toggle (single)">
-      <button type="button" class="fd-segment-btn fd-segment-btn--on" aria-pressed="true">One</button>
-      <button type="button" class="fd-segment-btn" aria-pressed="false">Two</button>
-      <button type="button" class="fd-segment-btn" aria-pressed="false">Three</button>
-    </div>
+</section>
+<br/>
+<section class="headless-button-toggle-filter-shell">
+  <span class="headless-button-toggle-filter-shell__label">Filter</span>
+  <div
+    tngButtonToggleGroup
+    class="headless-button-toggle-filter-shell__group"
+    type="single"
+    [tngButtonToggleValue]="activeTab()"
+    (valueChange)="onTabChange($event)"
+  >
+    <button tngButtonToggle tngButtonToggleValue="all" class="headless-button-toggle-filter-shell__item">All</button>
+    <button tngButtonToggle tngButtonToggleValue="assigned" class="headless-button-toggle-filter-shell__item">Assigned</button>
+    <button tngButtonToggle tngButtonToggleValue="drafts" class="headless-button-toggle-filter-shell__item">Drafts</button>
   </div>
-</div>
-</div>
+  <p>Selected tab: {{ activeTab() }}</p>
+</section>
+<br/>
+<section class="headless-button-toggle-formatting-example">
+  <div
+    tngButtonToggleGroup
+    class="headless-button-toggle-formatting-example__group"
+    type="multiple"
+    [tngButtonToggleValues]="formats()"
+    (valuesChange)="onFormatsChange($event)"
+  >
+    <button tngButtonToggle tngButtonToggleValue="bold" class="headless-button-toggle-formatting-example__item">Bold</button>
+    <button tngButtonToggle tngButtonToggleValue="italic" class="headless-button-toggle-formatting-example__item">Italic</button>
+    <button tngButtonToggle tngButtonToggleValue="underline" class="headless-button-toggle-formatting-example__item">Underline</button>
+  </div>
+  <p>Selected formats: {{ formats().join(', ') }}</p>
+</section>
+<br/>
+<section class="headless-button-toggle-disabled-example">
+  <div tngButtonToggleGroup class="headless-button-toggle-disabled-example__group" type="single" disabled="">
+    <button tngButtonToggle tngButtonToggleValue="grid" class="headless-button-toggle-disabled-example__item">Grid</button>
+    <button tngButtonToggle tngButtonToggleValue="list" class="headless-button-toggle-disabled-example__item">List</button>
+  </div>
+</section>

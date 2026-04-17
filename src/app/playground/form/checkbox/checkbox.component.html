@@ -1,31 +1,68 @@
-<div class="checkbox-root">
-<div class="fd-page">
-  <div class="fd-header">
-    <h2>Checkbox</h2>
-    <p>Checked/unchecked and a mixed-state example.</p>
+<section class="headless-checkbox-notification-shell">
+  <label class="headless-checkbox-notification-shell__row">
+    <input tngCheckbox [checked]="true" class="headless-checkbox-notification-shell__control" />
+    <span>Email release updates</span>
+  </label>
+  <label class="headless-checkbox-notification-shell__row">
+    <input
+      tngCheckbox
+      [indeterminate]="true"
+      class="headless-checkbox-notification-shell__control"
+    />
+    <span>Weekly digest (mixed)</span>
+  </label>
+  <label class="headless-checkbox-notification-shell__row headless-checkbox-notification-shell__row--readonly">
+    <input
+      tngCheckbox
+      [readonly]="true"
+      [checked]="true"
+      class="headless-checkbox-notification-shell__control"
+    />
+    <span>Legal archive acknowledged (readonly)</span>
+  </label>
+</section>
+<br />
+<section class="checkbox-filter-card">
+  <label class="checkbox-filter-card__row">
+    <input type="checkbox" tngCheckbox [checked]="true" class="checkbox-filter-card__control" />
+    <span>Show release blockers</span>
+  </label>
+  <label class="checkbox-filter-card__row">
+    <input type="checkbox" tngCheckbox [indeterminate]="true" class="checkbox-filter-card__control" />
+    <span>Escalated work items</span>
+  </label>
+</section>
+<br />
+<section class="headless-checkbox-policy-card">
+  <div class="headless-checkbox-policy-card__group">
+    <label class="headless-checkbox-policy-card__row headless-checkbox-policy-card__row--danger">
+      <input
+        tngCheckbox
+        [invalid]="true"
+        [ariaDescribedBy]="'headless-checkbox-policy-help'"
+        class="headless-checkbox-policy-card__control"
+      />
+      <span>Security review is required before production deploy.</span>
+    </label>
+    <p id="headless-checkbox-policy-help" class="headless-checkbox-policy-card__helper">
+      Finish this approval gate before enabling the release toggle.
+    </p>
   </div>
-
-  <div class="fd-card">
-    <div class="fd-options">
-      <label class="fd-option">
-        <input type="checkbox" checked />
-        <span>Checked</span>
-      </label>
-
-      <label class="fd-option">
-        <input type="checkbox" />
-        <span>Unchecked</span>
-      </label>
-
-      <div class="fd-option fd-option--mixed" role="checkbox" aria-checked="mixed" tabindex="0">
-        <span>Mixed (indeterminate) state</span>
-      </div>
-
-      <label class="fd-option fd-option--disabled">
-        <input type="checkbox" disabled />
-        <span>Disabled</span>
-      </label>
-    </div>
-  </div>
-</div>
-</div>
+  <label class="headless-checkbox-policy-card__row headless-checkbox-policy-card__row--readonly">
+    <input
+      tngCheckbox
+      [readonly]="true"
+      [checked]="true"
+      class="headless-checkbox-policy-card__control"
+    />
+    <span>Compliance archive is locked after sign-off.</span>
+  </label>
+  <label class="headless-checkbox-policy-card__row headless-checkbox-policy-card__row--disabled">
+    <input
+      tngCheckbox
+      [disabled]="true"
+      class="headless-checkbox-policy-card__control"
+    />
+    <span>Background sync is still reconciling release metrics.</span>
+  </label>
+</section>
